@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RerideApp::Application.config.secret_key_base = '65ba33bfcff1cd150c0d8f8783b83d71e22d11685576fb7844e5a037ebf129ceace8ed9273d274e9553de7c54f25b787c6f832611c4fa1383c4b2e2eb22f0701'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+RerideApp::Application.config.secret_key_base = secure_token
