@@ -13,9 +13,13 @@
 
         <%= f.label :email %>
         <%= f.text_field :email %>
-
-        <%= f.label :type %>
-        <%= f.text_field :type %>
+      
+        <%= f.radio_button :type, 'Customer' %>
+        <%= f.label :type, 'Customer', :value => 'Customer', :style => "display:inline" %>
+        <%= f.radio_button :type, 'Reseller' %>
+        <%= f.label :type, 'Reseller', :value => 'Reseller', :style => "display:inline" %>
+        <%= f.radio_button :type, 'Bike_Shop' %>
+        <%= f.label :type, 'Bike Shop', :value => 'Bike_Shop', :style => "display:inline" %>
         
         <%= f.submit "Keep me informed", class: "btn btn-large btn-primary" %>
       <% end %>
