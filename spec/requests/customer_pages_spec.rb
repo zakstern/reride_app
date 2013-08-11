@@ -23,7 +23,7 @@ describe "Customer pages" do
             	fill_in "First name",   with: "First"
             	fill_in "Last name",    with: "Last"
             	fill_in "Email",       	with: "foobar@example.com"
-            	fill_in "Type",         with: "foobar"
+            	fill_in "Type",         with: "Reseller"
         	end
 
         	it "should create a Customer" do

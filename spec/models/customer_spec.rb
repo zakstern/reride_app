@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Customer do
 
-  before { @customer = Customer.new(first_name: "First", last_name: "Last", email: "example@example.com", type: "example") }
+  before { @customer = Customer.new(first_name: "First", last_name: "Last", email: "example@example.com", type: "Reseller") }
 
   subject { @customer }
 
@@ -50,6 +50,11 @@ describe Customer do
 
   describe "when type is too long" do
     before { @customer.type = "a" * 51 }
+    it { should_not be_valid }
+  end
+
+  describe "when type is not included" do
+    before { @customer.type = "foobar" }
     it { should_not be_valid }
   end
 
