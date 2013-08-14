@@ -20,10 +20,10 @@ describe "Customer pages" do
 
     	describe "with valid information" do
         	before do
-            	fill_in "First name",   with: "First"
-            	fill_in "Last name",    with: "Last"
+            	fill_in "First Name",   with: "First"
+            	fill_in "Last Name",    with: "Last"
             	fill_in "Email",       	with: "foobar@example.com"
-            	fill_in "Type",         with: "Reseller"
+            	select 'Customer', :from => 'I am a...'
         	end
 
         	it "should create a Customer" do
