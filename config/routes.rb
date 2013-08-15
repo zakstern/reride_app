@@ -1,4 +1,5 @@
 RerideApp::Application.routes.draw do
+  get "users/new"
   resources :customers
   root  'static_pages#home'
   match '/signup',  to: 'customers#new',        via: 'get'

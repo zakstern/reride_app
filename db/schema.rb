@@ -11,17 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130811024025) do
+ActiveRecord::Schema.define(version: 20130815053557) do
 
-  create_table "customers", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "type"
+  create_table "bike_shops", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "street_address"
+    t.string   "phone_number"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "customers", force: true do |t|
+    t.string    "first_name"
+    t.string    "last_name"
+    t.string    "email"
+    t.string    "type"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+  end
+
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "string"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
