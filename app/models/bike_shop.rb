@@ -1,5 +1,6 @@
 class BikeShop < ActiveRecord::Base
-	has_one :user, :as => :profile
+	has_one :user, :as => :profile, :dependent => :destroy
+	accepts_nested_attributes_for :user
 	validates :name, presence: true, length: { maximum: 50 }
   	validates :city, presence: true, length: { maximum: 50 }
   	validates :state, presence: true

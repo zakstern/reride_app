@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   let(:bike_shop) { FactoryGirl.create(:bike_shop) }
-  before { @user = User.create(first_name: "First", last_name: "Last", email: "example@example.com", 
+  before { @user = User.new(first_name: "First", last_name: "Last", email: "example@example.com", 
     password: "foobar", password_confirmation: "foobar", profile: bike_shop) }
 
 
@@ -85,7 +85,6 @@ describe User do
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
     end
-
     it { should_not be_valid }
   end
 
@@ -113,9 +112,5 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
-  end
-
-  describe "return bike shop info" do
-
   end
 end
