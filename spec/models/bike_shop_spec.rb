@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe BikeShop do
 
+  
   before { @bike_shop = BikeShop.new(name: "Bike Shop", city: "Exampleville", state: "CA", 
-  	zip_code:"90405", street_address:"100 Fake Street", phone_number:"555-555-5555", website: "http://www.fake.com") }
+    zip_code:"90405", street_address:"100 Fake Street", phone_number:"555-555-5555", website: "http://www.fake.com") }
 
   subject { @bike_shop }
 

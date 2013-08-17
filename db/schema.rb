@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815053557) do
+ActiveRecord::Schema.define(version: 20130817062715) do
 
   create_table "bike_shops", force: true do |t|
     t.string   "name"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 20130815053557) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
+    t.integer  "profile_id"
+    t.string   "profile_type"
   end
 
 end

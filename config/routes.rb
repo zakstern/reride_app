@@ -1,6 +1,7 @@
 RerideApp::Application.routes.draw do
   get "users/new"
   resources :customers
+  resources :users
   root  'static_pages#home'
   match '/signup',  to: 'customers#new',        via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'

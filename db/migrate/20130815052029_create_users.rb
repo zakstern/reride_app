@@ -5,8 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :string
       t.string :last_name
       t.string :email
-      t.references :profile, polymorphic: true
-
       t.timestamps
     end
   end
