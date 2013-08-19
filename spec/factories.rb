@@ -15,6 +15,6 @@ FactoryGirl.define do
     sequence(:street_address)  { |n| "Last #{n}" }
     phone_number "5714387892"
     website "www.bikeshop.com"
-    user
+    users
   end
 end

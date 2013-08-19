@@ -4,45 +4,10 @@
   <div class="span6 offset3">
     <%= form_for(@bike_shop) do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
-	    <%= f.label :name, 'Shop Name' %>
-	    <%= f.text_field :name %>
-
-	    <%= f.label :street_address, 'Street Address' %>
-	    <%= f.text_field :street_address %>
-
-	    <%= f.label :city, 'City' %>
-	    <%= f.text_field :city %>
-
-	    <%= f.label :state, 'State' %>
-	    <%= f.text_field :state %>
-
-	    <%= f.label :zip_code, 'Zip Code' %>
-	    <%= f.text_field :zip_code %>
-
-	    <%= f.label :phone_number, 'Phone Number' %>
-	    <%= f.text_field :phone_number %>
-
-	    <%= f.label :website, 'Website' %>
-	    <%= f.text_field :website %>
-
-	    <% f.fields_for(:user) do |builder| %>
-
-	    	<%= builder.label :first_name, 'First Name:' %>
-	    	<%= builder.text_field :first_name %>
-
-	    	<%= builder.label :last_name, 'Last Name:' %>
-	    	<%= builder.text_field :last_name %>
-
-	    	<%= builder.label :email, 'Email:' %>
-	    	<%= builder.text_field :email %>
-
-	    	<%= builder.label :password, 'Password:' %>
-	    	<%= builder.password_field :password %>
-
-	    	<%= builder.label :password_confirmation, 'Password Confirmation:' %>
-	    	<%= builder.password_field :password_confirmation %>
+	    <%= render 'bike_shop_questions_fields', :f => f %>
+	    <%= f.fields_for(:user) do |builder| %>
+	    	<%= render 'user_questions_fields', :f => builder %>
 	    <% end %>
-
 	    <%= f.submit "Signup My Bike Shop", class: "btn btn-large btn-primary" %>
 	<% end %>
   </div>
