@@ -1,7 +1,8 @@
 RerideApp::Application.routes.draw do
   resources :customers
-  resources :users
-  resources :bike_shops
+  resources :bike_shops do
+    resources :users
+  end
   root  'static_pages#home'
   match '/bike_shop_signup', to: 'bike_shops#new', via: 'get'
   match '/signup',  to: 'customers#new',        via: 'get'

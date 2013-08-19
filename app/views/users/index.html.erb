@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<div id="users">
+	<% @users.each do |user| %>
+		<div class ="user">
+			<%= simple_format user.first_name %>
+			<%= simple_format user.last_name %>
+			<%= simple_format user.email %>
+		</div>
+	<% end %>
+</div>
+
+<p><%= link_to "New User", [:new, @profile, :user] %></p>

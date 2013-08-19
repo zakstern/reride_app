@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   let(:bike_shop) { FactoryGirl.create(:bike_shop) }
-  before { @user = User.new(first_name: "First", last_name: "Last", email: "example@example.com", 
+  before { @user = bike_shop.users.new(first_name: "First", last_name: "Last", email: "example@example.com", 
     password: "foobar", password_confirmation: "foobar", profile: bike_shop) }
 
 
