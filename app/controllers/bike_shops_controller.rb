@@ -1,7 +1,12 @@
 class BikeShopsController < ApplicationController
+
+  def index
+    @bike_shops = BikeShop.all
+  end
+
   def new
   	@bike_shop = BikeShop.new
-    @user = @bike_shop.build_user
+    user = @bike_shop.users.build
   end
 
   def show

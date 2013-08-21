@@ -35,17 +35,28 @@ describe "BikeShopPages" do
         fill_in "First Name",	with: "Jim"
         fill_in "Last Name",	with: "Smith"
         fill_in "Email", 		with: "fake@fake.com"
+     	fill_in "Password",		with: "temporary", :match => :prefer_exact
+     	fill_in "Password Confirmation:", with: "temporary", :match => :prefer_exact
       end
 
       it "should create a bike shop" do
         expect { click_button submit }.to change(BikeShop, :count).by(1)
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
       end
     end
   end
 
 	describe "profile page" do
 	    let(:bike_shop) { FactoryGirl.create(:bike_shop) }
-	    before { visit bike_shop_path(bike_shop) }
+	    
+	    before do 
+	    	bike_shop.users.build(first_name: "First", last_name: "Last", email: "example@example.com", 
+    		password: "foobar", password_confirmation: "foobar") 
+	    	visit bike_shop_path(bike_shop)
+	    end
 
 	    it { should have_title(bike_shop.name) }
 	    it { should have_content(bike_shop.name) }
@@ -56,9 +67,9 @@ describe "BikeShopPages" do
 	    it { should have_content(bike_shop.phone_number) }
 	    it { should have_content(bike_shop.website) }
 
-	    it { should have_content(bike_shop.user.first_name) }
-	    it { should have_content(bike_shop.user.last_name) }
-	    it { should have_content(bike_shop.user.email) }
+	    it { should have_content(bike_shop.users[0].first_name) }
+	    it { should have_content(bike_shop.users[0].last_name) }
+	    it { should have_content(bike_shop.users[0].email) }
 	 end
   
 end

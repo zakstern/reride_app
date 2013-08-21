@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe User do
 
-  let(:bike_shop) { FactoryGirl.create(:bike_shop) }
-  before { @user = bike_shop.users.new(first_name: "First", last_name: "Last", email: "example@example.com", 
-    password: "foobar", password_confirmation: "foobar", profile: bike_shop) }
-
-
+  let(:tempshop) { FactoryGirl.create(:bike_shop) }
+  before { @user = tempshop.users.build(first_name: "First", last_name: "Last", email: "example@example.com", 
+    password: "foobar", password_confirmation: "foobar") }
+ 
   subject { @user }
 
   it { should respond_to(:first_name) }

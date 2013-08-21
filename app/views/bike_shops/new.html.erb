@@ -5,7 +5,7 @@
     <%= form_for(@bike_shop) do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
 	    <%= render 'bike_shop_questions_fields', :f => f %>
-	    <%= f.fields_for(:user) do |builder| %>
+	    <%= f.fields_for :users do |builder| %>
 	    	<%= render 'user_questions_fields', :f => builder %>
 	    <% end %>
 	    <%= f.submit "Signup My Bike Shop", class: "btn btn-large btn-primary" %>

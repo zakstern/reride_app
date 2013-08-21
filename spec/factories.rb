@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com"}
     password "foobar"
     password_confirmation "foobar"
+    profile
   end
 
   factory :bike_shop do
@@ -12,9 +13,8 @@ FactoryGirl.define do
     city "Santa Monica"
     state "CA"
     zip_code "90405"
-    sequence(:street_address)  { |n| "Last #{n}" }
+    sequence(:street_address)  { |j| "Street #{j}" }
     phone_number "5714387892"
     website "www.bikeshop.com"
-    user
   end
 end
