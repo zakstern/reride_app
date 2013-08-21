@@ -27,6 +27,7 @@ class BikeShopsController < ApplicationController
 
     def bike_shop_params
       params.require(:bike_shop).permit(:name, :street_address, :city, :state, :zip_code,
-                                   :phone_number, :website)
+                                   :phone_number, :website, 
+                                   users_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :profile])
     end
 end
