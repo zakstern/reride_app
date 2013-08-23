@@ -28,11 +28,6 @@ describe Customer do
     it { should_not be_valid }
   end
 
-  describe "when type is not present" do
-    before { @customer.type = " " }
-    it { should_not be_valid }
-  end
-
   describe "when first name is too long" do
     before { @customer.first_name = "a" * 51 }
     it { should_not be_valid }
@@ -50,11 +45,6 @@ describe Customer do
 
   describe "when type is too long" do
     before { @customer.type = "a" * 51 }
-    it { should_not be_valid }
-  end
-
-  describe "when type is not included" do
-    before { @customer.type = "foobar" }
     it { should_not be_valid }
   end
 

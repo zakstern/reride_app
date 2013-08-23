@@ -17,4 +17,14 @@ FactoryGirl.define do
     phone_number "5714387892"
     website "www.bikeshop.com"
   end
+
+  factory :reseller do
+    name "Example Reseller"
+    city "Santa Monica"
+    state "CA"
+    zip_code "90405"
+    sequence(:street_address)  { |j| "Street #{j}" }
+    phone_number "5714387892"
+    website "www.bikeshop.com"
+  end
 end

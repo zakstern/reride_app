@@ -1,2 +1,12 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'New Employee Signup') %>
+<h1>Employee Signup</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@profile, @user] do |f| %>
+    	<%= render 'shared/error_messages', object: f.object %>
+	    <%= render 'shared/user_questions_fields', :f => f %>
+	    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+	<% end %>
+  </div>
+</div>
+

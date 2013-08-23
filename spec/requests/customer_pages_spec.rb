@@ -23,7 +23,6 @@ describe "Customer pages" do
             	fill_in "First Name",   with: "First"
             	fill_in "Last Name",    with: "Last"
             	fill_in "Email",       	with: "foobar@example.com"
-            	select 'Customer', :from => 'I am a...'
         	end
 
         	it "should create a Customer" do

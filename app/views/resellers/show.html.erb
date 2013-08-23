@@ -1,0 +1,13 @@
+<% provide(:title, @reseller.name) %>
+<h1><%= @reseller.name %></h1>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= render 'reseller_info', reseller: @reseller %>
+      <% for user in @reseller.users %>
+        <%= render 'shared/user_info', user: user %>
+      <% end %>
+    </div>
+  </div>
+
+<%= link_to 'Edit', edit_reseller_path(@reseller) %> |
+<%= link_to 'Back', resellers_path %>
