@@ -2,21 +2,9 @@
 <h1><%= @bike_shop.name %></h1>
   <div class="row">
     <div class="span6 offset3">
-      <ol>
-      	<li><%= @bike_shop.name %></li> 
-      	<li><%= @bike_shop.city %></li> 
-      	<li><%= @bike_shop.state %></li> 
-      	<li><%= @bike_shop.zip_code %></li> 
-  		  <li><%= @bike_shop.street_address %></li> 
-    		<li><%= @bike_shop.phone_number %></li> 
-    		<li><%= @bike_shop.website %></li> 
-      </ol>
+      <%= render 'bike_shop_info', bike_shop: @bike_shop %>
       <% for user in @bike_shop.users %>
-      <ol>
-        <li><%= user.first_name %></li> 
-        <li><%= user.last_name %></li> 
-        <li><%= user.email %></li> 
-      </ol>
+        <%= render 'shared/user_info', user: user %>
       <% end %>
     </div>
   </div>

@@ -1,16 +1,7 @@
 <% provide(:title, 'All Bike Shops') %>
 <h1>All bike shops</h1>
-
 <ul class="bike shops">
-	 <% @bike_shops.each do |bike_shop| %>
-	    <ol>
-      		<li><%= bike_shop.name %></li> 
-      		<li><%= bike_shop.city %></li> 
-      		<li><%= bike_shop.state %></li> 
-      		<li><%= bike_shop.zip_code %></li> 
-  		  	<li><%= bike_shop.street_address %></li> 
-    		<li><%= bike_shop.phone_number %></li> 
-    		<li><%= bike_shop.website %></li> 
-      </ol>
+	<% @bike_shops.each do |bike_shop| %>
+    <%= render 'bike_shop_info', bike_shop: bike_shop %>
 	<% end %>
 </ul>
