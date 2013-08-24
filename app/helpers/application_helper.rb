@@ -19,4 +19,7 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
+  def get_address(business)
+    address = "#{business.street_address}" + " " + "#{business.city}" + " " + "#{business.state}" + " " + "#{business.zip_code}" + " "
+  end
 end

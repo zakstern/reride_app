@@ -1,7 +1,16 @@
-<% provide(:title, 'All Bike Shops') %>
-<h1>All bike shops</h1>
-<ul class="bike shops">
-	<% @bike_shops.each do |bike_shop| %>
-    <%= render 'bike_shop_info', bike_shop: bike_shop %>
-	<% end %>
-</ul>
+<h1>Bike Shops</h1>
+
+<table>
+  <%= render 'shared/business_table_header' %>
+  <tbody>
+    <% @bike_shops.each do |bike_shop| %>
+      <tr>
+        <%= render 'shared/business_table_row_info', :business => bike_shop %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bike Shop', new_bike_shop_path %>

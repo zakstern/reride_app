@@ -1,0 +1,16 @@
+<h1>Customers</h1>
+
+<table>
+  <%= render 'customer_table_header' %>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <%= render 'customer_table_row_info', :object => customer %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

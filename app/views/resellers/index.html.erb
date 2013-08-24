@@ -1,34 +1,11 @@
-<h1>Listing resellers</h1>
+<h1>Resellers</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip code</th>
-      <th>Street address</th>
-      <th>Phone number</th>
-      <th>Website</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
+  <%= render 'shared/business_table_header' %>
   <tbody>
     <% @resellers.each do |reseller| %>
       <tr>
-        <td><%= reseller.name %></td>
-        <td><%= reseller.city %></td>
-        <td><%= reseller.state %></td>
-        <td><%= reseller.zip_code %></td>
-        <td><%= reseller.street_address %></td>
-        <td><%= reseller.phone_number %></td>
-        <td><%= reseller.website %></td>
-        <td><%= link_to 'Show', reseller %></td>
-        <td><%= link_to 'Edit', edit_reseller_path(reseller) %></td>
-        <td><%= link_to 'Destroy', reseller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'shared/business_table_row_info', :business => reseller %>
       </tr>
     <% end %>
   </tbody>
@@ -37,3 +14,4 @@
 <br>
 
 <%= link_to 'New Reseller', new_reseller_path %>
+

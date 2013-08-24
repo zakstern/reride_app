@@ -1,0 +1,7 @@
+<% provide(:title, @customer.first_name) %>
+<h1><%= @customer.first_name %></h1>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= render 'customer_info', customer: @customer %>
+    </div>
+  </div>

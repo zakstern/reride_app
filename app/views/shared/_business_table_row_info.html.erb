@@ -1,0 +1,8 @@
+<td><%= business.name %></td>
+<td><%= get_address(business) %></td>
+<td><%= business.phone_number %></td>
+<td><%= business.website %></td>
+<td><%= business.users.count %></td>
+<td><%= link_to 'Show', business %></td>
+<td><%= link_to 'Edit', "edit_" + "#{business.class.name.underscore}" + "_path(" + "#{business}" + ")" %></td>
+<td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
