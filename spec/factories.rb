@@ -8,6 +8,13 @@ FactoryGirl.define do
     profile
   end
 
+  factory :customer do
+    sequence(:first_name)  { |n| "First #{n}" }
+    sequence(:last_name)  { |n| "Last #{n}" }
+    sequence(:email) { |n| "person_#{n}@example.com"}
+    sequence(:type) { |n| "type #{n}"}
+  end
+
   factory :bike_shop do
   	name "Example Store"
     city "Santa Monica"

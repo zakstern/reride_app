@@ -1,4 +1,6 @@
 RerideApp::Application.routes.draw do
+  resources :bikes
+
   resources :resellers do
     resources :users
   end
