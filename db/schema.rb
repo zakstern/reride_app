@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830050618) do
+ActiveRecord::Schema.define(version: 20130831224127) do
 
   create_table "bike_shops", force: true do |t|
     t.string   "name"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20130830050618) do
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "quotes", force: true do |t|
+    t.integer  "bike_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quotes", ["bike_id"], name: "index_quotes_on_bike_id"
+  add_index "quotes", ["customer_id"], name: "index_quotes_on_customer_id"
 
   create_table "resellers", force: true do |t|
     t.string   "name"
