@@ -34,4 +34,5 @@ FactoryGirl.define do
     phone_number "5714387892"
     website "www.bikeshop.com"
   end
+
 end

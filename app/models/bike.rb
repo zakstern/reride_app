@@ -1,6 +1,6 @@
 class Bike < ActiveRecord::Base
 	has_many :quotes
-	has_one :customer, through: :quotes
+	has_many :customers, through: :quotes
 	validates :year_manufactured, presence: true
   	validates :make, presence: true
   	validates :model, presence: true
