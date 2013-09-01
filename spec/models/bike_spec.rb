@@ -14,6 +14,8 @@ describe Bike do
   it { should respond_to(:kind) }
   it { should respond_to(:msrp) }
   it { should respond_to(:current_price) }
+  it { should have_many(:quotes)}
+  it { should have_many(:customers)}
 
   it { should be_valid }
 

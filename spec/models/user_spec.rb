@@ -2,10 +2,14 @@ require 'spec_helper'
 
 describe User do
 
-  let(:tempshop) { FactoryGirl.create(:bike_shop) }
-  before { @user = tempshop.users.build(first_name: "First", last_name: "Last", email: "example@example.com", 
-    password: "foobar", password_confirmation: "foobar") }
+  #let(:tempshop) { FactoryGirl.create(:bike_shop) }
+  #before { @user = tempshop.users.build(first_name: "First", last_name: "Last", email: "example@example.com", 
+    #password: "foobar", password_confirmation: "foobar") }
  
+  before(:each) do
+    @user = FactoryGirl.build(:bike_shop_user)
+  end
+
   subject { @user }
 
   it { should respond_to(:first_name) }
@@ -111,5 +115,13 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
+  end
+
+  it "should destroy a user when the user's profile is destroyed" do
+    @user.save
+    profile = @user.profile
+    lambda { 
+      profile.destroy
+    }.should change(User, :count).by(-1)
   end
 end

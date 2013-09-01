@@ -9,13 +9,15 @@ describe Quote do
   subject { quote }
 
   it { should be_valid }
+  it { should belong_to(:bike) }
+  it { should belong_to(:customer) }
 
   describe "customer methods" do
     it { should respond_to(:customer) }
     its(:customer) { should eq customer }
   end
 
-  describe "bke methods" do
+  describe "bike methods" do
     it { should respond_to(:bike) }
     its(:bike) { should eq bike }
   end

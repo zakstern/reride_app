@@ -15,6 +15,7 @@ describe Reseller do
   it { should respond_to(:street_address) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:website) }
+  it { should have_many(:users)}
 
   it { should be_valid }
 
@@ -81,5 +82,14 @@ describe Reseller do
     end
 
     it { should_not be_valid }
+  end
+
+  it "should destroy users when reseller is destroyed" do
+    @reseller.save
+    @user = FactoryGirl.create(:reseller_user, profile: @reseller)
+    profile = @user.profile
+    lambda { 
+      profile.destroy
+    }.should change(User, :count).by(-1)
   end
 end

@@ -15,6 +15,7 @@ describe BikeShop do
   it { should respond_to(:street_address) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:website) }
+  it { should have_many(:users)}
 
   it { should be_valid }
 
