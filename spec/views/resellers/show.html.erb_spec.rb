@@ -25,3 +25,18 @@ describe "resellers/show" do
     rendered.should match(/Website/)
   end
 end
+
+describe "check for right links" do
+  let(:reseller) { FactoryGirl.create(:reseller) }
+  before { visit reseller_path(reseller) }
+  it "has create a user link" do
+    click_link "Add a User"
+    current_path.should == new_reseller_user_path
+  end
+  it "has an edit a user link" do
+    click_link "Edit"
+    current_path.should == edit_reseller_path(reseller)
+  end
+end
+
+

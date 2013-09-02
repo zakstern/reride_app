@@ -1,20 +1,33 @@
 require 'spec_helper'
 
-describe "quotes/new" do
-  before(:each) do
-    assign(:quote, stub_model(Quote,
-      :bike_id => 1,
-      :customer_id => ""
-    ).as_new_record)
+describe "new quote page" do
+  subject { page}
+
+  describe "new quote" do
+    before { visit new_quote_path }
+
+    it { should have_content("Get a Quote") }
+    it { should have_title("New Quote")}
   end
 
-  it "renders new quote form" do
-    render
+  describe "get a quote" do
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form[action=?][method=?]", quotes_path, "post" do
-      assert_select "input#quote_bike_id[name=?]", "quote[bike_id]"
-      assert_select "input#quote_customer_id[name=?]", "quote[customer_id]"
+    before { visit new_quote_path }
+
+    let(:submit) { "Show Quote" }
+
+    describe "with invalid information" do
+      it "should not create a quote" do
+        expect { click_button submit }.not_to change(Quote, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before { valid_quote_params }
+
+      it "should create a quote" do
+        expect { click_button submit }.to change(Quote, :count).by(1)
+      end
     end
   end
 end

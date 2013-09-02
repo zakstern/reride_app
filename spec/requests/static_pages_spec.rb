@@ -54,5 +54,5 @@ describe "Static Pages" do
     	click_link "Home"
         first(:link, "ReRide").click
     	expect(page).to have_title(full_title(''))
-  end
+    end
 end

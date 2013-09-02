@@ -20,4 +20,5 @@ describe "bikes/show" do
     rendered.should match(/1.5/)
     rendered.should match(/1.5/)
   end
+
 end
