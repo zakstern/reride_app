@@ -23,7 +23,7 @@ describe BikesController do
   # This should return the minimal set of attributes required to create a valid
   # Bike. As you add validations to Bike, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "year_manufactured" => "2013-08-29", "make" => "Example", "model" => "Example model", 
+  let(:valid_attributes) { { "year_manufactured" => "2013-08-29", "make" => "Example", "make_id" => 1, "model" => "Example model", "model_id" => 1, 
     "kind" => "road bike", "msrp" => 3000.5, "current_price" => 200.5 } }
   let(:testcustomer) { FactoryGirl.create(:customer) }  
 

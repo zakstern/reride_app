@@ -38,7 +38,9 @@ FactoryGirl.define do
   factory :bike do
     year_manufactured "2013-08-29"
     make "Example Make"
+    make_id 1
     model "Example Model"
+    model_id 1
     kind "Road"
     msrp 3000.5
     current_price 2000.5

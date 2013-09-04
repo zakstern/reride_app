@@ -5,7 +5,7 @@ class BikesController < ApplicationController
   # GET /bikes
   # GET /bikes.json
   def index
-    @bikes = Bike.all
+    @bikes = Bike.paginate(page: params[:page])
   end
 
   # GET /bikes/1
@@ -69,6 +69,6 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:year_manufactured, :make, :model, :kind, :msrp, :current_price, :customer_id)
+      params.require(:bike).permit(:year_manufactured, :make, :make_id, :model, :model_id, :kind, :msrp, :current_price, :customer_id)
     end
 end

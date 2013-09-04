@@ -1,37 +1,17 @@
-<h1>Listing bikes</h1>
+<h1>Bikes</h1>
 
+<%= will_paginate %>
 <table>
-  <thead>
-    <tr>
-      <th>Year Manufactured</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Kind</th>
-      <th>Msrp</th>
-      <th>Current price</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
+  <%= render 'bike_header' %>
   <tbody>
     <% @bikes.each do |bike| %>
       <tr>
-        <td><%= bike.year_manufactured %></td>
-        <td><%= bike.make %></td>
-        <td><%= bike.model %></td>
-        <td><%= bike.kind %></td>
-        <td><%= bike.msrp %></td>
-        <td><%= bike.current_price %></td>
-        <td><%= link_to 'Show', bike %></td>
-        <td><%= link_to 'Edit', edit_bike_path(bike) %></td>
-        <td><%= link_to 'Destroy', bike, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'bike_table_row_info', :object => bike%>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate %>
 <br>
 
 <%= link_to 'New Bike', new_bike_path %>

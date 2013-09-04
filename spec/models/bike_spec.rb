@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Bike do
 
   let(:testcustomer) { FactoryGirl.create(:customer) }  
-  before { @bike = testcustomer.bikes.build(year_manufactured: "2013-08-29", make: "Example", model: "Example Model", 
+  before { @bike = testcustomer.bikes.build(year_manufactured: "2013-08-29", make: "Example", make_id: 1, model: "Example Model", model_id: 1,
     kind:"Road", msrp: 3500.5, current_price: 2000.5) }
 
   subject { @bike }
@@ -34,18 +34,13 @@ describe Bike do
     it { should_not be_valid }
   end
 
-  describe "when kind is not present" do
-    before { @bike.kind = " " }
+  describe "when make_id is not present" do
+    before { @bike.make_id = " " }
     it { should_not be_valid }
   end
 
-  describe "when msrp is not present" do
-    before { @bike.msrp = " " }
-    it { should_not be_valid }
-  end
-
-  describe "when current price is not present" do
-    before { @bike.current_price = " " }
+  describe "when model_id is not present" do
+    before { @bike.model_id = " " }
     it { should_not be_valid }
   end
 end
