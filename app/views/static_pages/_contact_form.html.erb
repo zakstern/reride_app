@@ -1,0 +1,13 @@
+<%= form_for :contact, :url => contact_path(@contact) do |f| %>
+    <%#= render 'shared/error_messages', object: f.object %>
+
+	<%= f.label :email, 'Email:' %>
+	<%= f.text_field :email %>
+
+	<%= f.label :potential_relationship, 'I am a:' %>
+	<%= f.select(:potential_relationship, %w[Customer Reseller Bike\ Shop], :prompt => 'Select') %>
+
+	<%= f.submit "Signup for our email list", class: "btn btn-large btn-primary" %>
+<% end %>
+
+

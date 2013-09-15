@@ -1,6 +1,6 @@
 RerideApp::Application.routes.draw do
   resources :quotes
-
+  resources :contacts
   resources :bikes
 
   resources :resellers do

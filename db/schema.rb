@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904050833) do
+ActiveRecord::Schema.define(version: 20130915042651) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bike_shops", force: true do |t|
     t.string   "name"
@@ -38,16 +41,23 @@ ActiveRecord::Schema.define(version: 20130904050833) do
     t.integer  "model_id"
   end
 
-  create_table "customers", force: true do |t|
-    t.string    "first_name"
-    t.string    "last_name"
-    t.string    "email"
-    t.string    "type"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+  create_table "contacts", force: true do |t|
+    t.string   "email"
+    t.string   "potential_relationship"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
 
   create_table "quotes", force: true do |t|
     t.integer  "bike_id"
@@ -56,8 +66,8 @@ ActiveRecord::Schema.define(version: 20130904050833) do
     t.datetime "updated_at"
   end
 
-  add_index "quotes", ["bike_id"], name: "index_quotes_on_bike_id"
-  add_index "quotes", ["customer_id"], name: "index_quotes_on_customer_id"
+  add_index "quotes", ["bike_id"], name: "index_quotes_on_bike_id", using: :btree
+  add_index "quotes", ["customer_id"], name: "index_quotes_on_customer_id", using: :btree
 
   create_table "resellers", force: true do |t|
     t.string   "name"
