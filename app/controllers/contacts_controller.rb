@@ -17,10 +17,15 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)    
     if @contact.save
-      flash[:success] = "Thank you for signing up...stay tuned!"
-      redirect_to root_path
+	      flash[:success] = "Thank you for signing up...stay tuned!"
+	      redirect_to root_path
     else
-      render 'new'
+    	if @contact.errors.any? 
+			@contact.errors.full_messages.each do |msg|
+				flash[:error] = msg
+			end 
+		end
+      redirect_to root_path
     end
   end
 

@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "mechanize", "~> 2.7.2"
 gem 'pg', '0.15.1'
+gem "simple_form", "~> 3.0.0.rc"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
