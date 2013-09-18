@@ -17,6 +17,8 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  width: auto !important; 
+  overflow-x: hidden !important;
 }
 
 body {
