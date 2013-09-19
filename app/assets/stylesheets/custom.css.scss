@@ -17,7 +17,7 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
-/* universal */
+
 
 html {
   overflow-y: scroll;
@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
@@ -68,8 +68,8 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+  /*font-size: 1.1em;
+  line-height: 1.7em;*/
 }
 
 
@@ -121,7 +121,7 @@ footer {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb; /*Creates a darker shaded border*/
-  /*width: 100%; */
+ /* width: 30%; */
   /*padding: 10px;*/
   /*margin-bottom: 15px;*/
   /*@include box_sizing;*/
@@ -155,5 +155,11 @@ input {
   @include box_sizing;
 }
 
-
+/*Media Queries */
+@media only screen and (max-width: 320px) {
+  .hero-unit { 
+    h1 {font-size: 1.5em;}
+    h2 {font-size: 0.8em;}
+  }
+}
 
