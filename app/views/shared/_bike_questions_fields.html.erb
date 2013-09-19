@@ -1,5 +1,5 @@
 <%= f.label :make, 'Make' %>
-<%= f.text_field :make %>
+<%= f.collection_select :make, Bike.unique_by_make, :id , :make %>
 
 <%= f.label :model, 'Model' %>
 <%= f.text_field :model %>
