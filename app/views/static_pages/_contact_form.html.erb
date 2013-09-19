@@ -1,6 +1,6 @@
 <%= simple_form_for @contact, :html => {:class => "form-inline"} do |f| %>
 		<%= f.input_field :email, placeholder: 'Email', label: false, input_html: { class: 'input-medium' } %>
-	    <%= f.input_field :potential_relationship, input_html: { class: 'input-medium' }, collection: Contact::RELATIONSHIP_CHOICES.invert, prompt: "I am a:", label: false%>
+	    <%= f.input_field :potential_relationship, input_html: { class: 'input-small' }, collection: Contact::RELATIONSHIP_CHOICES.invert, prompt: "I am a:", label: false%>
 		<%= f.button :submit, 'Stay Informed', :class => 'btn btn-primary' %>
 <% end %>
 

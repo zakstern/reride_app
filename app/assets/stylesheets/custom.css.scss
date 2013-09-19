@@ -1,10 +1,7 @@
-@import "bootstrap";
+@import "../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss";
 body {
-  padding-top: 60px; /* puts 60 pixels of padding at the top of the page. Because of the navbar-fixed-top class in the header tag, Bootstrap fixes the navigation bar to the top of the page, 
-  so the padding serves to separate the main text from the navigation. Moved up ot prevent unwanted behavior on mobile */
+  
 }
-@import "bootstrap-responsive";
-
 /*Everything below is overriding Bootsrap CSS*/
 
 /* mixins, variables, etc. */
@@ -21,13 +18,13 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
-  width: auto;  /*added per SO http://stackoverflow.com/questions/17005500/bootstrap-css-responsive-left-with-a-white-space-on-the-right*/
-  overflow-x: hidden; /*added per SO http://stackoverflow.com/questions/17005500/bootstrap-css-responsive-left-with-a-white-space-on-the-right*/
 }
 
 body {
   width: auto; /*added per SO http://stackoverflow.com/questions/17005500/bootstrap-css-responsive-left-with-a-white-space-on-the-right*/
   overflow-x: hidden; /*added per SO http://stackoverflow.com/questions/17005500/bootstrap-css-responsive-left-with-a-white-space-on-the-right*/
+  padding-top: 70px; /* puts pixels of padding at the top of the page. Because of the navbar-fixed-top class in the header tag, Bootstrap fixes the navigation bar to the top of the page, 
+  so the padding serves to separate the main text from the navigation. */
 }
 
 section {
@@ -64,7 +61,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
+  /*color: $grayLight;*/
 }
 
 p {
@@ -82,7 +79,6 @@ p {
   color: white; /* Here color: #fff changes the color of the logo to white. */
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover { /* ampersand references the tag or class :hover is nested in.  In this case, #logo */
@@ -97,11 +93,11 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  /*color: $grayLight;*/
   a {
-    color: $gray;
+   /* color: $gray;*/
     &:hover {
-      color: $grayDarker;
+      /*color: $grayDarker;*/
     }
   }
   small {
