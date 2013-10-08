@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130915042651) do
+ActiveRecord::Schema.define(version: 20131008034123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 20130915042651) do
     t.integer  "make_id"
     t.integer  "model_id"
   end
+
+  add_index "bikes", ["make"], name: "index_bikes_on_make", using: :btree
+  add_index "bikes", ["model"], name: "index_bikes_on_model", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "email"
