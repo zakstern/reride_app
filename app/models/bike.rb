@@ -6,4 +6,8 @@ class Bike < ActiveRecord::Base
   	validates :model, presence: true
   	validates :make_id, presence: true
   	validates :model_id, presence: true
+
+  	default_scope :order => "make ASC"
+  	scope :unique_by_make, lambda { select(:make).uniq}
+  	scope :unique_by_model, lambda { select(:model).uniq}
 end
