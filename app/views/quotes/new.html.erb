@@ -4,7 +4,6 @@
   <div class="span6 offset3">
     <%= form_for @quote do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
-	    <%#= render 'shared/business_questions_fields', :f => f %>
 	    <%= f.fields_for :bikes do |builder| %>
   			<p><%= render 'shared/bike_questions_fields', :f => builder %></p>
 	    <% end %>
