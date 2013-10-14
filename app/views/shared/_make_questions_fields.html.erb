@@ -1,0 +1,2 @@
+<%= f.label :name, 'Make' %>
+<%= f.collection_select :name, Make.all, :id , :name, include_blank: true %>

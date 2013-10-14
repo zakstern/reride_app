@@ -1,0 +1,2 @@
+<%= f.label :year_value, 'Year' %>
+<%= f.grouped_collection_select :year_value, Model.order(:name), :years, :name, :id , :year_value, include_blank: true %>

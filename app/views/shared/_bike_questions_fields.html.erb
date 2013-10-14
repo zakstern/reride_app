@@ -1,8 +1,8 @@
-<%= f.label :make, 'Make' %>
-<%= f.collection_select :make, Bike.unique_by_make, :id , :make, include_blank: true %>
+<%= f.fields_for :makes do |builder| %>
+  	<p><%= render 'shared/make_questions_fields', :f => builder %></p>
+<% end %>
 
-<%= f.label :model, 'Model' %>
-<%= f.collection_select :model, Bike.unique_by_model.reorder("model ASC"), :id , :model, include_blank: true %>
+<%= f.fields_for :models do |builder| %>
+  	<p><%= render 'shared/model_questions_fields', :f => builder %></p>
+<% end %>
 
-<%= f.label :year_manufactured, 'Year' %>
-<%= f.date_field :year_manufactured %>
