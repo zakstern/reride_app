@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008034123) do
+ActiveRecord::Schema.define(version: 20131013231754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,20 +29,12 @@ ActiveRecord::Schema.define(version: 20131008034123) do
   end
 
   create_table "bikes", force: true do |t|
-    t.date     "year_manufactured"
-    t.string   "make"
-    t.string   "model"
     t.string   "kind"
     t.float    "msrp"
     t.float    "current_price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "make_id"
-    t.integer  "model_id"
   end
-
-  add_index "bikes", ["make"], name: "index_bikes_on_make", using: :btree
-  add_index "bikes", ["model"], name: "index_bikes_on_model", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "email"
@@ -61,6 +53,19 @@ ActiveRecord::Schema.define(version: 20131008034123) do
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
+
+  create_table "makes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "models", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "make_id"
+  end
 
   create_table "quotes", force: true do |t|
     t.integer  "bike_id"
@@ -94,6 +99,13 @@ ActiveRecord::Schema.define(version: 20131008034123) do
     t.string   "password_digest"
     t.integer  "profile_id"
     t.string   "profile_type"
+  end
+
+  create_table "years", force: true do |t|
+    t.integer  "year_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "model_id"
   end
 
 end

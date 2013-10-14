@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<%= simple_form_for @contact, :html => {:class => "form-inline"} do |f| %>
-		<%= f.input :email, placeholder: 'example@ex.com', label: 'Email', input_html: { class: 'input-medium' } %>
-	    <%= f.input :potential_relationship, input_html: { class: 'input-medium' }, collection: Contact::RELATIONSHIP_CHOICES.invert, prompt: "I am a:", label: 'Please Select'%>
-		<%= f.button :submit, 'Stay Informed', :class => 'btn btn-large btn-primary' %>
-=======
 <%= simple_form_for @contact, :html => {:class => "form-horizontal"} do |f| %>
 	<%= f.input :email, placeholder: 'example@ex.com', label: 'Email', input_html: { class: 'input-lg' } %>
 	<%= f.input :potential_relationship, input_html: { class: 'input-sm' }, collection: Contact::RELATIONSHIP_CHOICES.invert, prompt: "Select", label: "I am a:"%>
 	<%= f.button :submit, 'Stay Informed', :class => 'btn btn-primary' %>
->>>>>>> remove-turbolinks
 <% end %>
 
 

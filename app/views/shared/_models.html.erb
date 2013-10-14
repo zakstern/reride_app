@@ -1,0 +1,9 @@
+<%= f.label :model, 'Model' %>
+<% if !bikes.blank? %>
+	<%= f.collection_select :model, bikes, :id , :model, include_blank: true %>
+<% else %>
+	<%= f.collection_select :model, [], :id , :model, include_blank: true %>
+<% end %>
+
+
+
