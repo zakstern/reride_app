@@ -5,6 +5,7 @@ RerideApp::Application.routes.draw do
   resources :customers
   resources :quotes
     match 'quotes/update_model_select/:id', :controller=>'quotes', :action => 'update_model_select', via: 'get'
+    match 'quotes/update_year_select/:id', :controller=>'quotes', :action => 'update_year_select', via: 'get'
 
 
   resources :resellers do

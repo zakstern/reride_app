@@ -8,4 +8,8 @@
 	</div>
 <% end %>
 
-
+<%= f.fields_for :years do |builder| %>
+	<div id="modelYears"
+  		<p><%= render 'shared/year_questions_fields', :f => builder, :current_years => [] %></p>
+	</div>
+<% end %>

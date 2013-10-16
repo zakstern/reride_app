@@ -1,9 +1,38 @@
-<%#= f.label :name, 'Model' %>
-<% if !current_models.blank? %>
-	<%= collection_select :model, :name, current_models, :id , :name, include_blank: true %>
-<% else %>
-	<%= collection_select :model, :name, [], :id , :name, include_blank: true %>
+<script type="text/javascript">
+jQuery(function($) {
+// when the #model field changes
+  $("#quote_bikes_models_name").change(function() {
+    // make a POST call and replace the content
+    var model = $('select#quote_bikes_models_name :selected').val();
+    if(model == "") model="0";
+    jQuery.get('/quotes/update_year_select/' + model, function(data){
+        $("#modelYears").html(data);
+    })
+    return false;
+  });
+})
+</script>
+
+<%= form_for('quote', remote: true) do |f| %>
+	<%= f.fields_for :bikes do |g| %>
+		<%= g.fields_for :models do |i| %>
+			<%= i.label :name, 'Model' %>
+			<% if !current_models.blank? %>
+				<%= i.collection_select :name, current_models, :id , :name, include_blank: true %>
+			<% else %>
+				<%= i.collection_select :name, [], :id , :name, include_blank: true %>
+			<% end %>
+		<% end %>
+	<% end %>
 <% end %>
+
+
+
+
+
+
+
+
 
 
 
