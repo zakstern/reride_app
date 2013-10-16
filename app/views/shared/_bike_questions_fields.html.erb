@@ -3,6 +3,9 @@
 <% end %>
 
 <%= f.fields_for :models do |builder| %>
-  	<p><%= render 'shared/model_questions_fields', :f => builder %></p>
+	<div id="bikeModels"
+  		<p><%= render 'shared/model_questions_fields', :f => builder, :current_models => [] %></p>
+	</div>
 <% end %>
+
 

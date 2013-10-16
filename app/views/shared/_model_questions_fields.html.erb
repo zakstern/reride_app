@@ -1,2 +1,10 @@
-<%= f.label :name, 'Model' %>
-<%= f.grouped_collection_select :name, Make.order(:name), :models, :name, :id , :name, include_blank: true %>
+<%#= f.label :name, 'Model' %>
+<% if !current_models.blank? %>
+	<%= collection_select :model, :name, current_models, :id , :name, include_blank: true %>
+<% else %>
+	<%= collection_select :model, :name, [], :id , :name, include_blank: true %>
+<% end %>
+
+
+
+

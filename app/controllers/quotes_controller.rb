@@ -61,6 +61,11 @@ class QuotesController < ApplicationController
     end
   end
 
+  def update_model_select
+    models = Model.where(:make_id=>params[:id]).order(:name) unless params[:id].blank?
+    render :partial => "shared/model_questions_fields", :locals => { :current_models => models }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quote

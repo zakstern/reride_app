@@ -2,6 +2,10 @@ RerideApp::Application.routes.draw do
   resources :quotes
   resources :contacts
   resources :bikes
+  resources :customers
+  resources :quotes
+    match 'quotes/update_model_select/:id', :controller=>'quotes', :action => 'update_model_select', via: 'get'
+
 
   resources :resellers do
     resources :users
@@ -11,8 +15,6 @@ RerideApp::Application.routes.draw do
     resources :users
   end
 
-  resources :customers
-  
   root  'static_pages#home'
   match '/bike_shop_signup', to: 'bike_shops#new', via: 'get'
   match '/reseller_signup', to: 'resellers#new', via: 'get'
@@ -20,6 +22,10 @@ RerideApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

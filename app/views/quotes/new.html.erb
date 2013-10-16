@@ -2,7 +2,7 @@
 <h1>Get a Quote</h1>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for @quote do |f| %>
+    <%= form_for(@quote, remote: true) do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
 	    <%= f.fields_for :bikes do |builder| %>
   			<p><%= render 'shared/bike_questions_fields', :f => builder %></p>
