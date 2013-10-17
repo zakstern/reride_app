@@ -7,4 +7,6 @@ class Bike < ActiveRecord::Base
     accepts_nested_attributes_for :make
     accepts_nested_attributes_for :model
     accepts_nested_attributes_for :year
+
+    has_attached_file :side_picture
 end

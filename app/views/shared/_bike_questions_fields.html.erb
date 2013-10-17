@@ -13,3 +13,6 @@
   		<p><%= render 'shared/year_questions_fields', :f => builder, :current_years => [] %></p>
 	</div>
 <% end %>
+
+<%= f.label :name, 'Picture of Bike (from the side)' %>
+<%= f.file_field :side_picture %>

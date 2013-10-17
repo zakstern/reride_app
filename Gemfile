@@ -11,6 +11,7 @@ gem "mechanize", "~> 2.7.2"
 gem 'pg', '0.15.1'
 gem "simple_form", "~> 3.0.0.rc"
 gem 'jquery-turbolinks'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

@@ -13,7 +13,7 @@ jQuery(function($) {
 })
 </script>
 
-<%= form_for('quote', remote: true) do |f| %>
+<%= form_for('quote') do |f| %>
 	<%= f.fields_for :bikes do |g| %>
 		<%= g.fields_for :models do |i| %>
 			<%= i.label :name, 'Model' %>
