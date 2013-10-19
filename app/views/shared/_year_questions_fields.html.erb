@@ -1,12 +1,8 @@
-<%= form_for('bike', remote: true) do |f| %>
-	<%= f.fields_for :years do |ff| %>
-		<%= f.label :year_value, 'Year' %>
-		<% if !current_years.blank? %>
-			<%= ff.collection_select :year_value, current_years, :id , :year_value, include_blank: true %>
-		<% else %>
-			<%= ff.collection_select :year_value, [], :id , :year_value, include_blank: true %>
-		<% end %>
-	<% end %>
+<%= label :year_id, 'Year' %>
+<% if !current_years.blank? %>
+	<%= collection_select :bike, :year_id, current_years, :id , :year_value, include_blank: true %>
+<% else %>
+	<%= collection_select :bike, :year_id, [], :id , :year_value, include_blank: true %>
 <% end %>
 
 

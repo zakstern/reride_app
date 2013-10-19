@@ -1,9 +1,9 @@
 <script type="text/javascript">
 jQuery(function($) {
 // when the #model field changes
-  $("#bike_models_name").change(function() {
+  $("#bike_model_id").change(function() {
     // make a POST call and replace the content
-    var model = $('select#bike_models_name :selected').val();
+    var model = $('select#bike_model_id :selected').val();
     if(model == "") model="0";
     jQuery.get('/bikes/update_year_select/' + model, function(data){
         $("#modelYears").html(data);
@@ -13,16 +13,13 @@ jQuery(function($) {
 })
 </script>
 
-<%= form_for('bike') do |f| %>
-	<%= f.fields_for :models do |ff| %>
-		<%= ff.label :name, 'Model' %>
-		<% if !current_models.blank? %>
-			<%= ff.collection_select :name, current_models, :id , :name, include_blank: true %>
-		<% else %>
-			<%= ff.collection_select :name, [], :id , :name, include_blank: true %>
-		<% end %>
-	<% end %>
+<%= label :model_id, 'Model' %>
+<% if !current_models.blank? %>
+	<%= collection_select :bike, :model_id, current_models, :id , :name, include_blank: true %>
+<% else %>
+	<%= collection_select :bike, :model_id, [], :id , :name, include_blank: true %>
 <% end %>
+
 
 
 

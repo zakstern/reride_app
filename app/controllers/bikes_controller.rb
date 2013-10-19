@@ -79,6 +79,6 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:year_manufactured, :make, :make_id, :model, :model_id, :kind, :msrp, :current_price, :customer_id)
+      params.require(:bike).permit(:year_id, :make, :make_id, :model, :model_id, :kind, :msrp, :current_price, :customer_id)
     end
 end

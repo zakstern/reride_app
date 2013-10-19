@@ -4,23 +4,14 @@
   <div class="span6 offset3">
     <%= form_for(@bike, :html => { :multipart => true}) do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
-	    <%= f.fields_for :makes do |builder| %>
-  			<p><%= render 'shared/make_questions_fields', :f => builder %></p>
-		<% end %>
+    	<p><%= render 'shared/make_questions_fields', :f => f %></p>
 
 		<div id="bikeModels"
-		<%= f.fields_for :models do |builder| %>
-			
-	  			<p><%= render 'shared/model_questions_fields', :f => builder, :current_models => [] %></p>
-
-		<% end %>
+	  		<p><%= render 'shared/model_questions_fields', :f => f, :current_models => [] %></p>
 		</div>
-
-		<%= f.fields_for :years do |builder| %>
-			<div id="modelYears"
-		  		<p><%= render 'shared/year_questions_fields', :f => builder, :current_years => [] %></p>
-			</div>
-		<% end %>
+		<div id="modelYears"
+		  	<p><%= render 'shared/year_questions_fields', :f => f, :current_years => [] %></p>
+		</div>
 
 		<%= f.label :name, 'Picture of Bike (from the side)' %>
 		<%= f.file_field :side_picture %>

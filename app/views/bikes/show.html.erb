@@ -1,33 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Year Manufactures:</strong>
-  <%= @bike.year_manufactured %>
-</p>
-
-<p>
   <strong>Make:</strong>
-  <%= @bike.make %>
-</p>
-
-<p>
+  <% make = Make.find(@bike.make_id) %>
+  <%= make.name %>
   <strong>Model:</strong>
-  <%= @bike.model %>
-</p>
-
-<p>
-  <strong>Kind:</strong>
-  <%= @bike.kind %>
-</p>
-
-<p>
-  <strong>Msrp:</strong>
-  <%= @bike.msrp %>
-</p>
-
-<p>
-  <strong>Current price:</strong>
-  <%= @bike.current_price %>
+  <% model_temp = Model.find(@bike.model_id) %>
+  <%= model_temp.name %>
+  <strong>Year:</strong>
+  <% year = Year.find(@bike.year_id) %>
+  <%= year.year_value %>
 </p>
 
 <%= link_to 'Edit', edit_bike_path(@bike) %> |
