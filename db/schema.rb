@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016221133) do
+ActiveRecord::Schema.define(version: 20131019043024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20131016221133) do
     t.string   "side_picture_content_type"
     t.integer  "side_picture_file_size"
     t.datetime "side_picture_updated_at"
+    t.integer  "make_id"
+    t.integer  "model_id"
+    t.integer  "year_id"
+    t.decimal  "quote_value",               precision: 8, scale: 2
   end
 
   create_table "contacts", force: true do |t|

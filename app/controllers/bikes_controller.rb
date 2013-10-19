@@ -61,6 +61,16 @@ class BikesController < ApplicationController
     end
   end
 
+  def update_model_select
+    models = Model.where(:make_id=>params[:id]).order(:name) unless params[:id].blank?
+    render :partial => "shared/model_questions_fields", :locals => { :current_models => models }
+  end
+
+  def update_year_select
+    model = Model.find(params[:id])
+    render :partial => "shared/year_questions_fields", :locals => { :current_years => model.years }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bike

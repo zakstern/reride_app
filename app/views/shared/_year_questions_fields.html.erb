@@ -1,12 +1,10 @@
-<%= form_for('quote', remote: true) do |f| %>
-	<%= f.fields_for :bikes do |g| %>
-		<%= g.fields_for :years do |i| %>
-			<%= i.label :year_value, 'Year' %>
-			<% if !current_years.blank? %>
-				<%= i.collection_select :year_value, current_years, :id , :year_value, include_blank: true %>
-			<% else %>
-				<%= i.collection_select :year_value, [], :id , :year_value, include_blank: true %>
-			<% end %>
+<%= form_for('bike', remote: true) do |f| %>
+	<%= f.fields_for :years do |ff| %>
+		<%= f.label :year_value, 'Year' %>
+		<% if !current_years.blank? %>
+			<%= ff.collection_select :year_value, current_years, :id , :year_value, include_blank: true %>
+		<% else %>
+			<%= ff.collection_select :year_value, [], :id , :year_value, include_blank: true %>
 		<% end %>
 	<% end %>
 <% end %>

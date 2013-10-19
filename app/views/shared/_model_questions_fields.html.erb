@@ -1,11 +1,11 @@
 <script type="text/javascript">
 jQuery(function($) {
 // when the #model field changes
-  $("#quote_bikes_models_name").change(function() {
+  $("#bike_models_name").change(function() {
     // make a POST call and replace the content
-    var model = $('select#quote_bikes_models_name :selected').val();
+    var model = $('select#bike_models_name :selected').val();
     if(model == "") model="0";
-    jQuery.get('/quotes/update_year_select/' + model, function(data){
+    jQuery.get('/bikes/update_year_select/' + model, function(data){
         $("#modelYears").html(data);
     })
     return false;
@@ -13,15 +13,13 @@ jQuery(function($) {
 })
 </script>
 
-<%= form_for('quote') do |f| %>
-	<%= f.fields_for :bikes do |g| %>
-		<%= g.fields_for :models do |i| %>
-			<%= i.label :name, 'Model' %>
-			<% if !current_models.blank? %>
-				<%= i.collection_select :name, current_models, :id , :name, include_blank: true %>
-			<% else %>
-				<%= i.collection_select :name, [], :id , :name, include_blank: true %>
-			<% end %>
+<%= form_for('bike') do |f| %>
+	<%= f.fields_for :models do |ff| %>
+		<%= ff.label :name, 'Model' %>
+		<% if !current_models.blank? %>
+			<%= ff.collection_select :name, current_models, :id , :name, include_blank: true %>
+		<% else %>
+			<%= ff.collection_select :name, [], :id , :name, include_blank: true %>
 		<% end %>
 	<% end %>
 <% end %>

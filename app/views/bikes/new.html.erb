@@ -1,5 +1,32 @@
-<h1>New bike</h1>
+<% provide(:title, 'New Quote') %>
+<h1>Get a Quote</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@bike, :html => { :multipart => true}) do |f| %>
+    	<%= render 'shared/error_messages', object: f.object %>
+	    <%= f.fields_for :makes do |builder| %>
+  			<p><%= render 'shared/make_questions_fields', :f => builder %></p>
+		<% end %>
 
-<%= render 'form' %>
+		<div id="bikeModels"
+		<%= f.fields_for :models do |builder| %>
+			
+	  			<p><%= render 'shared/model_questions_fields', :f => builder, :current_models => [] %></p>
 
+		<% end %>
+		</div>
+
+		<%= f.fields_for :years do |builder| %>
+			<div id="modelYears"
+		  		<p><%= render 'shared/year_questions_fields', :f => builder, :current_years => [] %></p>
+			</div>
+		<% end %>
+
+		<%= f.label :name, 'Picture of Bike (from the side)' %>
+		<%= f.file_field :side_picture %>
+
+	    <%= f.submit "Show Quote", class: "btn btn-large btn-primary" %>
+	<% end %>
+  </div>
+</div>
 <%= link_to 'Back', bikes_path %>
