@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Make:</strong>
   <% make = Make.find(@bike.make_id) %>
@@ -10,6 +8,8 @@
   <strong>Year:</strong>
   <% year = Year.find(@bike.year_id) %>
   <%= year.year_value %>
+
+  <%= image_tag @bike.side_picture.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_bike_path(@bike) %> |

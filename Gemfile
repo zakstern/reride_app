@@ -12,6 +12,7 @@ gem 'pg', '0.15.1'
 gem "simple_form", "~> 3.0.0.rc"
 gem 'jquery-turbolinks'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 1.5.7'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -20,7 +21,7 @@ group :development, :test do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
-  gem 'railroady'
+  gem 'railroady', '1.1.1'
 end
 
 group :test do

@@ -15,9 +15,9 @@ jQuery(function($) {
 
 <%= label :model_id, 'Model' %>
 <% if !current_models.blank? %>
-	<%= collection_select :bike, :model_id, current_models, :id , :name, include_blank: true %>
+	<%= collection_select :bike, :model_id, current_models, :id , :name, {include_blank: true}, {:class=>'form-control'} %>
 <% else %>
-	<%= collection_select :bike, :model_id, [], :id , :name, include_blank: true %>
+	<%= collection_select :bike, :model_id, [], :id , :name, {include_blank: true}, {:class=>'form-control'} %>
 <% end %>
 
 

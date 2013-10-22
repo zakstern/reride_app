@@ -3779,7 +3779,6 @@
 672;Cannondale;71752;Bad Girl 1;2012;
 672;Cannondale;71751;Bad Girl 2;2013;
 672;Cannondale;71751;Bad Girl 2;2012;
-672;Cannondale;71750;Bad Girl 3;2013;
 672;Cannondale;71750;Bad Girl 3;2012;
 672;Cannondale;46956;Beast Of The East 900;1998;
 672;Cannondale;55624;Bent I;2006;
@@ -5361,7 +5360,6 @@
 672;Cannondale;73903;Trigger Carbon 2;2013;
 672;Cannondale;46981;TS700;1999;
 672;Cannondale;46981;TS700;1998;
-672;Cannondale;70440;Women's Adventure 1;2013;
 672;Cannondale;70440;Women's Adventure 1;2011;
 672;Cannondale;70439;Women's Adventure 2;2013;
 672;Cannondale;70439;Women's Adventure 2;2012;

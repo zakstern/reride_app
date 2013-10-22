@@ -2,22 +2,33 @@
 <h1>Get a Quote</h1>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@bike, :html => { :multipart => true}) do |f| %>
+    <%= form_for(@bike, :html => { :role => "form", :class => "form-horizontal", :multipart => true}) do |f| %>
     	<%= render 'shared/error_messages', object: f.object %>
-    	<p><%= render 'shared/make_questions_fields', :f => f %></p>
+    	
+    	<div class="form-group">
+    		<p><%= render 'shared/make_questions_fields', :f => f %></p>
+    	</div>
 
-		<div id="bikeModels"
-	  		<p><%= render 'shared/model_questions_fields', :f => f, :current_models => [] %></p>
+    	<div class="form-group">
+			<div id="bikeModels"
+	  			<p><%= render 'shared/model_questions_fields', :f => f, :current_models => [] %></p>
+			</div>
 		</div>
-		<div id="modelYears"
-		  	<p><%= render 'shared/year_questions_fields', :f => f, :current_years => [] %></p>
+
+		<div class="form-group">
+			<div id="modelYears"
+		  		<p><%= render 'shared/year_questions_fields', :f => f, :current_years => [] %></p>
+			</div>
 		</div>
 
-		<%= f.label :name, 'Picture of Bike (from the side)' %>
-		<%= f.file_field :side_picture %>
-
+		<div class="form-group">
+			<%= f.label :name, 'Picture of Bike (from the side)' %>
+			<%= f.file_field :side_picture %>
+		</div>
+		
 	    <%= f.submit "Show Quote", class: "btn btn-large btn-primary" %>
 	<% end %>
   </div>
 </div>
 <%= link_to 'Back', bikes_path %>
+

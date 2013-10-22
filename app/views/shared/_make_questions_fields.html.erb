@@ -1,2 +1,2 @@
 <%= f.label :make_id, 'Make' %>
-<%= f.collection_select :make_id, Make.all, :id , :name, include_blank: true %>
+<%= f.collection_select :make_id, Make.all, :id , :name, {include_blank: true}, {:class=>'form-control'} %>

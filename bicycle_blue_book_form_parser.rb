@@ -9,7 +9,8 @@ agent = Mechanize.new
 
 #create and open a local file to save this data
 puts "Opening the local file to write to"
-my_local_file = open("bicycle_make_model_year_combos_4", "w")
+today_date = Date.today.to_s
+my_local_file = open("bicycle_BBB_data_#{today_date}", "w")
 puts "Opened the file"
 
 combo_counter = 0 #count how many valid combos were written
@@ -18,12 +19,12 @@ make_counter = 0
 
 mainpage = agent.get('http://www.bicyclebluebook.com/') #Download the main page's HTML structure
 form = mainpage.forms.first #find the form from which the bicycle make,model, year combos exist
-make = form.field("customBicycleSearch$ddnBikeSearchMake") #find the first form element "Make"
+make = form.field("ctl00$contentBody$customBicycleSearch$ddnBikeSearchMake") #find the first form element "Make"
 
 #allow for us to set where we want to start
 make_options_copy = []
 make_options_counter = 0
-starting_make_number = 409  #CHANGE THIS TO WHERE YOU LEFT OFF
+starting_make_number = 1 #CHANGE THIS TO WHERE YOU LEFT OFF
 make.options.each do |option|
 	if make_options_counter >= starting_make_number
 		make_options_copy.push(option)
@@ -36,7 +37,7 @@ puts "Writing to file..."
 
 not_first_make = false
 make_options_copy.each do |make_option|  #iterate through each make option
-
+puts make_option
 	if not_first_make
 		puts "Successfully wrote #{current_combo_counter} Combinations of Make #{make_counter+starting_make_number} of #{make.options.count-1}"
 		make_counter += 1
@@ -47,14 +48,14 @@ make_options_copy.each do |make_option|  #iterate through each make option
 
 	page_with_make_selected = agent.get('http://www.bicyclebluebook.com/searchlisting.aspx?make=' + make_option.to_s) #Download the page with the first make selected HTML structure
 	form_with_make_selected = page_with_make_selected.forms.first #get the form
-	model = form_with_make_selected.field("ctl00$customBicycleSearch$ddnBikeSearchModel") #get the model field that now has options populated
+	model = form_with_make_selected.field("ctl00$contentBody$customBicycleSearch$ddnBikeSearchModel") #get the model field that now has options populated
 	
 	model.options.each do |model_option|
 
 		page_with_make_and_model_selected = agent.get('http://www.bicyclebluebook.com/searchlisting.aspx?make=' + make_option.to_s + 
 			'&model=' + model_option.to_s) #Get a page with both make and model selected
 		form_with_make_and_model_selected = page_with_make_and_model_selected.forms.first #get the form
-		year = form_with_make_and_model_selected.field("ctl00$customBicycleSearch$ddnBikeSearchYear") #get the year field that now has options populated
+		year = form_with_make_and_model_selected.field("ctl00$contentBody$customBicycleSearch$ddnBikeSearchYear") #get the year field that now has options populated
 		
 		valid_year_option = false
 		year.options.each do |year_option|
