@@ -27,9 +27,24 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Home",    root_path %></li>
-      <li><%= link_to "About",    about_path %></li>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Quote",   "#" %></li>
+      <li><%= link_to "Partners", "#"    %></li>
+      <li><%= link_to "Contact",  "#"  %></li>
+      <li><%= link_to "About",   "#" %></li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <form class="navbar-form" role="form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+      </li>
   </div><!-- /.navbar-collapse -->
 </nav>
+

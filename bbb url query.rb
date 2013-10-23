@@ -20,7 +20,7 @@ today_date = Date.today.to_s
 my_local_file = open("bicycle_BBB_full_data_#{today_date}", "a")
 puts "Opened the file"
 
-line_number = 1 #enter in what line to start from
+line_number = 50017 #enter in what line to start from
 
 #Open file to read
 
@@ -71,7 +71,8 @@ File.open("Bicycle_make_model_year_combo_complete09032013.txt", "r").each do |li
 				end
 			end
 			my_local_file.write("\n")
-			puts "Wrote line #{counter} of #{total_count}"
+			puts "Wrote line #{line_number} of #{total_count}"
+			line_number = line_number + 1
 
 		rescue 
 			puts "Error at line #{counter-1}"
@@ -80,7 +81,7 @@ File.open("Bicycle_make_model_year_combo_complete09032013.txt", "r").each do |li
 		end
     end 
 end
-puts "Wrote #{counter} lines."
+puts "Wrote #{line_number} lines."
 puts "#{error_counter} errors"
 puts "Closing the file."
 my_local_file.close

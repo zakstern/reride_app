@@ -1,6 +1,7 @@
 <p>
   <strong>Make:</strong>
-  <% make = Make.find(@bike.make_id) %>
+  <%# make = Make.find(@bike.make_id) %>
+  <% make = @bike.make %>
   <%= make.name %>
   <strong>Model:</strong>
   <% model_temp = Model.find(@bike.model_id) %>
@@ -8,7 +9,7 @@
   <strong>Year:</strong>
   <% year = Year.find(@bike.year_id) %>
   <%= year.year_value %>
-
+  <br>
   <%= image_tag @bike.side_picture.url(:medium) %>
 </p>
 
