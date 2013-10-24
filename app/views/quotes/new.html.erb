@@ -2,13 +2,33 @@
 <h1>Get a Quote</h1>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@quote, :html => { :multipart => true}) do |f| %>
-    	<%= render 'shared/error_messages', object: f.object %>
-	    <%= f.fields_for :bikes do |builder| %>
-  			<p><%= render 'shared/bike_questions_fields', :f => builder %></p>
-	    <% end %>
-	    <%= f.submit "Show Quote", class: "btn btn-large btn-primary" %>
-	<% end %>
+    
+    <div class="form-group">
+	    <%= label :make_id, 'Make' %>
+		<%= collection_select(:bike, :make_id, Make.all, :id, :name, {include_blank: true}, {:class=>'form-control'})%>
+	</div>
+	
+	<div class="form-group">
+		<div id="bikeModels"
+			<p><%= render 'shared/model_questions_fields', :current_models => [] %></p>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div id="modelYears"
+			<p><%= render 'shared/year_questions_fields', :current_years => [] %></p>
+		</div>
+	</div>
   </div>
 </div>
+
+<%= link_to line_items_path(product_id: product), 
+          class: "btn btn-larg btn-primary",
+          method: :put %>
+
 <%= link_to 'Back', quotes_path %>
+
+
+
+
+

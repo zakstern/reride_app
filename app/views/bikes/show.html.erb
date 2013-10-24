@@ -1,16 +1,17 @@
 <p>
   <strong>Make:</strong>
   <%# make = Make.find(@bike.make_id) %>
-  <% make = @bike.make %>
+  <% make = Make.find(@bike.make_id) %>
   <%= make.name %>
   <strong>Model:</strong>
   <% model_temp = Model.find(@bike.model_id) %>
   <%= model_temp.name %>
   <strong>Year:</strong>
-  <% year = Year.find(@bike.year_id) %>
+  <% year = Year.find_by(:year_value => @bike.year_id) %>
   <%= year.year_value %>
   <br>
-  <%= image_tag @bike.side_picture.url(:medium) %>
+  <p> Depending on the condition of the bike, ReRide will purchase your bike for a price between <strong><%= (@bike.like_new_value)*0.6 %></strong> and <%= (@bike.fair_value)*0.6 %>
+  <%#= image_tag @bike.side_picture.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_bike_path(@bike) %> |

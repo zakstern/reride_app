@@ -1,8 +1,8 @@
 <%= label :year_id, 'Year' %>
 <% if !current_years.blank? %>
-	<%= collection_select :bike, :year_id, current_years, :id , :year_value, {include_blank: true}, {:class=>'form-control'} %>
+	<%= collection_select :bike, :year_value, current_years, :year_value , :year_value, {include_blank: true}, {:class=>'form-control'} %>
 <% else %>
-	<%= collection_select :bike, :year_id, [], :id , :year_value, {include_blank: true}, {:class=>'form-control'} %>
+	<%= collection_select :bike, :year_value, [], :year_value , :year_value, {include_blank: true}, {:class=>'form-control'} %>
 <% end %>
 
 

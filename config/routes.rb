@@ -4,6 +4,7 @@ RerideApp::Application.routes.draw do
   resources :bikes
     match 'bikes/update_model_select/:id', :controller=>'bikes', :action => 'update_model_select', via: 'get'
     match 'bikes/update_year_select/:id', :controller=>'bikes', :action => 'update_year_select', via: 'get'
+    match 'bikes/search/', :controller=> 'bikes', :action => 'search', via: 'post'
   resources :customers
   resources :quotes
   

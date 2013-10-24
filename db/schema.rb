@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019043024) do
+ActiveRecord::Schema.define(version: 20131023222028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20131019043024) do
     t.integer  "model_id"
     t.integer  "year_id"
     t.decimal  "quote_value",               precision: 8, scale: 2
+    t.decimal  "like_new_value",            precision: 8, scale: 2
+    t.decimal  "excellent_value",           precision: 8, scale: 2
+    t.decimal  "fair_value",                precision: 8, scale: 2
+    t.decimal  "good_value",                precision: 8, scale: 2
   end
 
   create_table "contacts", force: true do |t|
@@ -80,6 +84,14 @@ ActiveRecord::Schema.define(version: 20131019043024) do
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "side_picture_file_name"
+    t.string   "side_picture_content_type"
+    t.integer  "side_picture_file_size"
+    t.datetime "side_picture_updated_at"
+    t.string   "front_picture_file_name"
+    t.string   "front_picture_content_type"
+    t.integer  "front_picture_file_size"
+    t.datetime "front_picture_updated_at"
   end
 
   add_index "quotes", ["bike_id"], name: "index_quotes_on_bike_id", using: :btree

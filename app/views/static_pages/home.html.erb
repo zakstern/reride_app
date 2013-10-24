@@ -7,6 +7,33 @@
 	</p>
 </div>
 
+<%#= content_tag(:a, 'Quotes', :name => 'quotes') %>
+<h1>Get a Quote</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:bike, :url => {:controller => 'bikes', :action => 'search'}, :html => {:role => "form", :class => "form-horizontal"}) do |f| %>
+	    <div class="form-group">
+		    <%= label :make_id, 'Make' %>
+			<%= collection_select(:bike, :make_id, Make.all, :id, :name, {include_blank: true}, {:class=>'form-control'})%>
+		</div>
+		
+		<div class="form-group">
+			<div id="bikeModels"
+				<p><%= render 'shared/model_questions_fields', :current_models => [] %></p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div id="modelYears"
+				<p><%= render 'shared/year_questions_fields', :current_years => [] %></p>
+			</div>
+		</div>
+		<%= f.submit "Show Quote", class: "btn btn-primary btn-lg" %>
+	<% end %>
+  </div>
+</div>
+
+
 <!--
 <h2>
 <p class="text-left">

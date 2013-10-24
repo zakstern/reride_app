@@ -61,6 +61,12 @@ class BikesController < ApplicationController
     end
   end
 
+  def search
+    puts params[:bike][:make_id]
+    bike = Bike.find_by(:make_id => params[:bike][:make_id], :model_id => params[:bike][:model_id], :year_id => params[:bike][:year_value])
+    redirect_to :action => "show", :id => bike.id
+  end
+
   def update_model_select
     models = Model.where(:make_id=>params[:id]).order(:name) unless params[:id].blank?
     render :partial => "shared/model_questions_fields", :locals => { :current_models => models }
@@ -79,6 +85,8 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:year_id, :make, :make_id, :model, :model_id, :kind, :msrp, :current_price, :customer_id, :side_picture)
+      params.require(:bike).permit(:year_id, :make, :make_id, :model, :model_id, :kind, 
+        :msrp, :current_price, :customer_id, :side_picture, :like_new_value, :excellent_value, :good_value,
+        :fair_value)
     end
 end
