@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params) 
     if @customer.save
       flash[:success] = "Information Saved!"
-      render 'show'
+      redirect_to @customer
     else
       render 'new'
     end
@@ -43,6 +43,6 @@ class CustomersController < ApplicationController
 
     def customer_params
       params.require(:customer).permit!
-      #params.require(:customer).permit(quotes_attributes: [:side_picture, :front_picture], :first_name, :last_name, :email, :street_address, :city, :state, :zip_code, :phone_number, :type)
+      #params.require(:customer).permit(quotes_attributes: [:id, :side_picture, :front_picture]), :first_name, :last_name, :email, :street_address, :city, :state, :zip_code, :phone_number, :type)
     end
 end

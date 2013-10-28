@@ -1,5 +1,7 @@
-<ol>
-	<li><%= customer.first_name %></li>
-	<li><%= customer.last_name %></li>
-	<li><%= customer.email %></li>
-</ol>
+<ul class="list-group">
+  <li class="list-group-item"><strong>First Name: </strong><%= customer.first_name %></li>
+  <li class="list-group-item"><strong>Last Name: </strong><%= customer.last_name %></li>
+  <li class="list-group-item"><strong>E-Mail: </strong><%= customer.email %></li>
+  <li class="list-group-item"><strong>Address: </strong><%= customer.street_address %> <%= customer.city %> <%= customer.state %> <%= customer.zip_code %></li>
+  <li class="list-group-item"><strong>Phone Number: </strong><%= customer.phone_number %></li>
+</ul>
