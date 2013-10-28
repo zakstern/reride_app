@@ -1,8 +1,6 @@
 class Quote < ActiveRecord::Base
-	has_one :customer
-	has_one :bike
- 	accepts_nested_attributes_for :customer
- 	accepts_nested_attributes_for :bike
+	belongs_to :customer
+	belongs_to :bike
  	has_attached_file :side_picture, 
         :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
         :storage => :s3,

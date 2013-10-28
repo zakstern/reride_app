@@ -11,6 +11,9 @@ class BikesController < ApplicationController
   # GET /bikes/1
   # GET /bikes/1.json
   def show
+    puts "in /bikes/show"
+    @customer = Customer.new
+    @quote = @customer.quotes.build
   end
 
   # GET /bikes/new
@@ -62,19 +65,26 @@ class BikesController < ApplicationController
   end
 
   def search
-    puts params[:bike][:make_id]
     bike = Bike.find_by(:make_id => params[:bike][:make_id], :model_id => params[:bike][:model_id], :year_id => params[:bike][:year_value])
     redirect_to :action => "show", :id => bike.id
   end
 
   def update_model_select
-    models = Model.where(:make_id=>params[:id]).order(:name) unless params[:id].blank?
+    if params[:id] == '0'
+      models = []
+    else
+      models = Make.find(params[:id]).models
+    end
     render :partial => "shared/model_questions_fields", :locals => { :current_models => models }
   end
 
   def update_year_select
-    model = Model.find(params[:id])
-    render :partial => "shared/year_questions_fields", :locals => { :current_years => model.years }
+    if params[:id] == '0'
+      years = []
+    else
+      years = Model.find(params[:id]).years
+    end
+    render :partial => "shared/year_questions_fields", :locals => { :current_years => years }
   end
 
   private

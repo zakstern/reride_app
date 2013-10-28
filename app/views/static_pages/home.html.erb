@@ -7,8 +7,12 @@
 	</p>
 </div>
 
-<%#= content_tag(:a, 'Quotes', :name => 'quotes') %>
-<h1>Get a Quote</h1>
+<h1>
+<%= content_tag(:a, '', :name => 'Quotes') %>
+
+
+Get A Quote
+</h1>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(:bike, :url => {:controller => 'bikes', :action => 'search'}, :html => {:role => "form", :class => "form-horizontal"}) do |f| %>

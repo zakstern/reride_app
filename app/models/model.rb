@@ -1,6 +1,5 @@
 class Model < ActiveRecord::Base
 	belongs_to :make
-	belongs_to :bike
 	has_many :versions, foreign_key: "model_id", dependent: :destroy
 	has_many :years, through: :versions
 	accepts_nested_attributes_for :years

@@ -1,7 +1,8 @@
 class Bike < ActiveRecord::Base
-    has_one :make
-    has_one :model
-    has_one :year
+    belongs_to :make
+    belongs_to :model
+    belongs_to :year
+    has_many :quotes
     accepts_nested_attributes_for :make
     accepts_nested_attributes_for :model
     accepts_nested_attributes_for :year

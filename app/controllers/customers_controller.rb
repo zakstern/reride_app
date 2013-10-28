@@ -15,10 +15,10 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.new(customer_params)    
+    @customer = Customer.new(customer_params) 
     if @customer.save
-      flash[:success] = "Thank you for signing up...stay tuned!"
-      redirect_to root_path
+      flash[:success] = "Information Saved!"
+      render 'show'
     else
       render 'new'
     end
@@ -42,7 +42,7 @@ class CustomersController < ApplicationController
     end
 
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :email,
-                                   :type)
+      params.require(:customer).permit!
+      #params.require(:customer).permit(quotes_attributes: [:side_picture, :front_picture], :first_name, :last_name, :email, :street_address, :city, :state, :zip_code, :phone_number, :type)
     end
 end
