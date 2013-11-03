@@ -1,6 +1,7 @@
 class Quote < ActiveRecord::Base
 	belongs_to :customer
 	belongs_to :bike
+    has_one :transaction
  	has_attached_file :side_picture, 
         :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
         :storage => :s3,

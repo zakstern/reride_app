@@ -7,7 +7,10 @@ RerideApp::Application.routes.draw do
     match 'bikes/search/', :controller=> 'bikes', :action => 'search', via: 'post'
 
   resources :quotes
+    match 'quotes/search/', :controller=> 'quotes', :action => 'search', via: 'post'
   resources :customers
+  resources :transactions
+  resources :inspections
     
   resources :resellers do
     resources :users

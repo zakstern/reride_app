@@ -1,0 +1,41 @@
+<div class ="center">
+	<h1>Transaction Found!</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Make: </strong><%= bike.make.name %>                <button type="button" class="btn btn-default">Confirm</button></li>
+      <li class="list-group-item"><strong>Model: </strong><%= bike.model.name %></li>
+      <% year = Year.find_by(:year_value => bike.year_id) %>
+      <li class="list-group-item"><strong>Year: </strong><%= year.year_value %></li>
+      <li class="list-group-item"><strong>Side Picture </strong><br><%= image_tag quote.side_picture.url(:medium), :class =>"img-rounded" %></li>
+      <li class="list-group-item"><strong>Front Picture </strong><br><%= image_tag quote.front_picture.url(:medium), :class =>"img-rounded" %></li>
+    </ul>
+  </div>
+</div> 
+
+<%= form_for(inspection, :html => { :role => "form", :class => "form-horizontal", :multipart => true}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <h1>Chain Status:</h1>
+  <div class="form-group">    
+    <%= f.radio_button(:chain_status, 4) %>
+    <%= f.label(:chain_status, "Like-New") %>
+    <%= f.radio_button(:chain_status, 3) %>
+    <%= f.label(:chain_status, "Excellent") %>
+    <%= f.radio_button(:chain_status, 2) %>
+    <%= f.label(:chain_status, "Good") %>
+    <%= f.radio_button(:chain_status, 1) %>
+    <%= f.label(:chain_status, "Fair") %>
+    <%= f.radio_button(:chain_status, 0) %>
+    <%= f.label(:chain_status, "Poor") %>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+
+
+

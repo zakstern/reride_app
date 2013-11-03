@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025040132) do
+ActiveRecord::Schema.define(version: 20131103061006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,30 @@ ActiveRecord::Schema.define(version: 20131025040132) do
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
 
+  create_table "inspections", force: true do |t|
+    t.integer  "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "front_derailleur_status"
+    t.integer  "rear_derailleur_status"
+    t.integer  "front_wheel_status"
+    t.integer  "rear_wheel_status"
+    t.integer  "front_brake_status"
+    t.integer  "rear_brake_status"
+    t.integer  "seat_status"
+    t.integer  "handlebar_tape_status"
+    t.integer  "shifter_status"
+    t.integer  "rear_cassette_status"
+    t.integer  "chain_status"
+    t.integer  "front_chainring_status"
+    t.integer  "front_tire_status"
+    t.integer  "rear_tire_status"
+    t.integer  "front_tube_status"
+    t.integer  "rear_tube_status"
+    t.integer  "frame_status"
+    t.text     "additional_info"
+  end
+
   create_table "makes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -112,6 +136,15 @@ ActiveRecord::Schema.define(version: 20131025040132) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "bike_shop_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quote_id"
   end
 
   create_table "users", force: true do |t|

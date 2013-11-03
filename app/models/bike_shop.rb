@@ -1,5 +1,6 @@
 class BikeShop < ActiveRecord::Base
 	has_many :users, as: :profile, dependent: :destroy
+	has_many :transactions
 	accepts_nested_attributes_for :users, :allow_destroy => true
 	validates :name, presence: true, length: { maximum: 50 }
   	validates :city, presence: true, length: { maximum: 50 }

@@ -60,6 +60,14 @@ class QuotesController < ApplicationController
     end
   end
 
+  def search
+    puts 'in search'
+    quote = Quote.find(params[:quote][:quote_id])
+    transaction = quote.build_transaction
+    inspection = transaction.build_inspection
+    render :partial => 'shared/inspection_form', :locals => { :bike => transaction.quote.bike, :quote => transaction.quote, :transaction => transaction, :inspection => inspection}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quote
