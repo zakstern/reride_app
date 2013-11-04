@@ -13,6 +13,40 @@ $grayMediumLight: #eaeaea;
 }
 
 
+/*Overriding the jumbotron to allow for a background image*/
+.jumbotron {
+  position: relative;
+  z-index: 3;
+  h1 {
+    position: relative;
+    color: white;
+    z-index: 10;
+  }
+  p{
+    color: #80DCFF;
+    z-index: 10;
+    position: relative;
+  }
+  
+}
+
+.btn-warning {
+    z-index: 10;
+    position: relative;
+  }
+
+.jumbotron:after {
+  background:  url('Jumbotron_main_1140x280.png');
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
 
 html {
   overflow-y: scroll;

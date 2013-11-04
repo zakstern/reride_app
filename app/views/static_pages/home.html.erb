@@ -1,11 +1,14 @@
-<div class="center jumbotron">
-	<h1>Where selling a used bike is painless.</h1>
-	<%= image_tag("circular gray logo.png", class: "img-responsive") %>
-	<h1>Sign up to learn more: </h1>
-	<p>
-		<%= render 'contact_form' %>
-	</p>
+<div class="jumbotron">
+	<div class="container">
+		<div class="pull-left">
+			<h1>Bicycle buyback, simple and easy.</h1>
+			<p>With guaranteed pricing and local drop-off, ReRide takes the pain out of selling a used bike</p>
+			<%= link_to "Get Started", root_path(:anchor => "Quotes"), class: "btn btn-warning btn-lg", role: "button" %>
+		</div>
+	</div>
 </div>
+
+<%= render 'how_it_works' %>
 
 <div class = "center">
 	<h1>
