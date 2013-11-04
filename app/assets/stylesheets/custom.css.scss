@@ -36,7 +36,7 @@ $grayMediumLight: #eaeaea;
   }
 
 .jumbotron:after {
-  background:  url('Jumbotron_main_1140x280.png');
+  background:  asset-url('Jumbotron_main_1140x280.png');
   background-size: cover;
   bottom: 0;
   content: "";
