@@ -48,6 +48,29 @@ $grayMediumLight: #eaeaea;
   z-index: 2;
 }
 
+/*Overring the navbar*/
+
+.navbar-inverse {
+  background-color:#404040;
+  filter: none;
+  background-image: none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+
+/*Setting the styles for the highlight area*/
+.highlight{
+  h2{
+    color: #f0ad4e;
+  }
+  h3{
+    color: #f0ad4e;
+  }
+  background-color: #FFF6E6;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -87,10 +110,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   /*color: $grayLight;*/
 }
