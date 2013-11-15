@@ -15,4 +15,5 @@
 //= require jquery.turbolinks
 //= require bootstrap/bootstrap
 //= require turbolinks
+//= require quotes.js.coffee
 //= require_tree .
