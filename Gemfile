@@ -19,6 +19,7 @@ gem 'coffee-rails', '4.0.0'
 gem 'jquery-rails', '2.2.1'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
+gem "figaro"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

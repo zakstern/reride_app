@@ -17,6 +17,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params) 
     if @customer.save
+      CustomerMailer.quote_confirmation(@customer).deliver
       flash[:success] = "Information Saved!"
       redirect_to @customer
     else
