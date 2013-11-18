@@ -70,7 +70,6 @@ class BikesController < ApplicationController
   end
 
   def update_model_select
-    puts "made it here"
     if params[:id] == '0'
       models = []
     else
