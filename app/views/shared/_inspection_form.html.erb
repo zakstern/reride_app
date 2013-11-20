@@ -12,12 +12,12 @@
   
   <%= render 'shared/error_messages', object: f.object %>
   
-  <% Inspection::INSPECTION_TYPES.each do |name| %>
-    <h1> <%=name.titleize %> </h1>
+  <% Inspection::INSPECTION_HASH.each do |key, value| %>
+    <h1> <%=key.titleize %> </h1>
     <div class="form-group">
-      <% Inspection::INSPECTION_VALUES.each do |text, value| %>
-        <%= f.radio_button name, value %>
-        <%= f.label name, text %>
+      <% value.each do |k, v| %>
+        <%= f.radio_button key, v %>
+        <%= f.label key, k %>
       <% end %>
     </div>
   <% end %> 

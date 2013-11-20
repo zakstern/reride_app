@@ -17,7 +17,6 @@
 	</h1>
 </div>
 <div class="row">
-  <div class="span6 offset3">
     <%= form_for(:bike, :url => {:controller => 'bikes', :action => 'search'}, :html => {:role => "form", :class => "form-horizontal"}) do |f| %>
 	    <div class="form-group">
 		    <%= label :make_id, 'Make' %>
@@ -35,9 +34,8 @@
 				<p><%= render 'shared/year_questions_fields', :current_years => [] %></p>
 			</div>
 		</div>
-		<%= f.submit "Show Quote", class: "btn btn-primary btn-lg" %>
+		<%= f.submit "Show Quote", class: "btn btn-warning btn-lg" %>
 	<% end %>
-  </div>
 </div>
 
 
