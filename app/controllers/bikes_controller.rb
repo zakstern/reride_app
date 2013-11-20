@@ -11,7 +11,6 @@ class BikesController < ApplicationController
   # GET /bikes/1
   # GET /bikes/1.json
   def show
-    puts "in /bikes/show"
     @customer = Customer.new
     @quote = @customer.quotes.build
   end

@@ -1,0 +1,24 @@
+<p><%= @customer.first_name %>,</p>
+
+<p>Thank you for getting a quote from ReRide!</p>
+<% for quote in @customer.quotes %>
+	<p>Your transaction ID is: <strong>#<%= quote.id %></strong>.</p>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+      <% for quote in @customer.quotes %>
+
+        <div class="well well-lg">
+          <div class="center">
+              ReRide will give you up to <strong><%= number_to_currency((quote.bike.like_new_value)*0.6) %></strong> for the bike listed below. Please take your bike to <%= link_to "YOUR BIKE SHOP HERE", "http://helenscycles.com/" %> for inspection.  <br>  
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<p>Sincerely,</p>
+<p>The ReRide Team</p>
+
+<p><%= link_to "Quote Info", customer_url(@customer) %></p>

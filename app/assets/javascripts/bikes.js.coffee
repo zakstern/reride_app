@@ -8,11 +8,10 @@ ready = ->
   
   # when the #make field changes
   $("#bike_make_id").change ->
-
     # make a POST call and replace the content
     make = $("select#bike_make_id :selected").val()
     make = "0"  if make is ""
-    jQuery.get "/bikes/update_model_select/" + make, (data) ->
+    jQuery.get "./bikes/update_model_select/" + make, (data) ->
       $("#bikeModels").html data
 
     false
