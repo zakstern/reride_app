@@ -22,14 +22,6 @@ GIT
       cocaine (~> 0.5.0)
       mime-types
 
-GIT
-  remote: git://github.com/thoughtbot/shoulda-matchers.git
-  revision: da22d329067416ff851744a315197c6a44595dc2
-  branch: dp-rails-four
-  specs:
-    shoulda-matchers (2.2.0)
-      activesupport (>= 3.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -306,7 +298,6 @@ DEPENDENCIES
   sass-rails (= 4.0.0)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.0.0)
-  shoulda-matchers!
   simple_form (~> 3.0.0.rc)
   spork-rails!
   turbolinks (= 1.1.1)
