@@ -1,0 +1,68 @@
+<%= form_for(@customer, :html => { :role => "form", :class => "form-horizontal", :multipart => true}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.fields_for :quotes do |g| %>
+
+    <%= g.hidden_field :bike_id, :value => @bike.id %>
+
+      <div class="form-group">
+        <%= g.label :side_picture, 'Picture of Bike (from the side)' %>
+        <div class="row">
+          <%= image_tag("example_bike_from_side.jpg", :alt => "Example") %>
+        </div>
+        <br>
+        <%= g.file_field :side_picture %>
+      </div>
+
+      <div class="form-group">
+        <%= g.label :front_picture, 'Picture of Bike (from the front)' %>
+        <%= g.file_field :front_picture %>
+      </div>
+  <% end %>
+
+  <div class="row">
+  <h1>Customer Info:</h1>
+</div>
+
+  <div class="form-group">
+    <%= f.label :first_name, 'First Name' %>
+    <%= f.text_field :first_name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, 'Last Name' %>
+    <%= f.text_field :last_name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, 'Email' %>
+    <%= f.email_field :email, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :street_address, 'Street Address' %>
+    <%= f.text_field :street_address, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :city, 'City' %>
+    <%= f.text_field :city, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :state, 'State' %>
+    <%= f.select :state, options_for_select(us_states), { :include_blank => true }, {:class => "form-control"} %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :zip_code, 'Zip Code' %>
+    <%= f.text_field :zip_code, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone_number, 'Phone Number' %>
+    <%= f.telephone_field :phone_number, :class => "form-control" %>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>

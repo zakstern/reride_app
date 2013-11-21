@@ -8,24 +8,31 @@
   </div>
 </div>
 
-<%= form_for(inspection, :html => { :role => "form", :class => "form-horizontal", :multipart => true}) do |f| %>
-  
-  <%= render 'shared/error_messages', object: f.object %>
-  
-  <% Inspection::INSPECTION_HASH.each do |key, value| %>
-    <h1> <%=key.titleize %> </h1>
-    <div class="form-group">
-      <% value.each do |k, v| %>
-        <%= f.radio_button key, v %>
-        <%= f.label key, k %>
-      <% end %>
-    </div>
-  <% end %> 
 
-  <div class="form-group">
-    <%= f.label :additional_info, "Any Additional Info:" %>
-    <%= f.text_area :additional_info %>
-  </div>
+<%= form_for :transaction, :html => { :role => "form", :class => "form-horizontal", :multipart => true } do |f| %>
+
+  <%#= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :quote_id, :value => quote.id %>
+  <%= f.hidden_field :customer_id, :value => quote.customer_id %>
+
+  <%= f.fields_for :inspections do |g| %>
+  
+    <% Inspection::INSPECTION_HASH.each do |key, value| %>
+      <h1> <%=key.titleize %> </h1>
+      <div class="form-group">
+        <% value.each do |k, v| %>
+          <%= g.radio_button key, v %>
+          <%= g.label key, k %>
+        <% end %>
+      </div>
+    <% end %> 
+
+    <div class="form-group">
+      <%= g.label :additional_info, "Any Additional Info:" %>
+      <%= g.text_area :additional_info %>
+    </div>
+  <% end %>
 
   <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 <% end %>
