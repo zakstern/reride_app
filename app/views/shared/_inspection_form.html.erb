@@ -9,14 +9,15 @@
 </div>
 
 
-<%= form_for :transaction, :html => { :role => "form", :class => "form-horizontal", :multipart => true } do |f| %>
+<%= form_for transaction, :remote => true, :html => { :id => "finish_inspection", :role => "form", :class => "form-horizontal"} do |f| %>
 
   <%#= render 'shared/error_messages', object: f.object %>
 
   <%= f.hidden_field :quote_id, :value => quote.id %>
   <%= f.hidden_field :customer_id, :value => quote.customer_id %>
 
-  <%= f.fields_for :inspections do |g| %>
+
+  <%= f.fields_for :inspection do |g| %>
   
     <% Inspection::INSPECTION_HASH.each do |key, value| %>
       <h1> <%=key.titleize %> </h1>
@@ -33,6 +34,7 @@
       <%= g.text_area :additional_info %>
     </div>
   <% end %>
+
 
   <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 <% end %>

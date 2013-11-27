@@ -28,11 +28,10 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @transaction }
+        format.js
       else
         format.html { render action: 'new' }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

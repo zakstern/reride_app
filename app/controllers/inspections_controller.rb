@@ -68,12 +68,7 @@ class InspectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inspection_params
-      params.require(:inspection).permit(
-		:transaction_id, :front_derailleur_status, :rear_derailleur_status, :front_wheel_status,
-		:rear_wheel_status, :front_brake_status, :rear_brake_status, :seat_status,
-		:handlebar_tape_status, :shifter_status, :rear_cassette_status, :chain_status,
-		:front_chainring_status, :front_tire_status, :rear_tire_status, :front_tube_status, 
-		:rear_tube_status, :frame_status, :additional_info)
+      params.require(:inspection).permit!
     end
 end
 

@@ -62,7 +62,9 @@ class QuotesController < ApplicationController
 
   def search
     quote = Quote.find(params[:quote][:quote_id])
-    render :partial => 'shared/inspection_form', :locals => { :bike => quote.bike, :quote => quote }
+    transaction = Transaction.new
+    transaction.build_inspection
+    render :partial => 'shared/inspection_form', :locals => { :bike => quote.bike, :quote => quote, :transaction => transaction, :inspection => transaction.inspection }
   end
 
   private
