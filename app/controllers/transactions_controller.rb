@@ -26,8 +26,12 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
+    puts @transaction.buyback_cost
+    @transaction.buyback_cost = get_buyback_cost(@transaction)
+    puts @transaction.buyback_cost
     respond_to do |format|
       if @transaction.save
+        CustomerMailer.inspection_confirmation(@transaction).deliver
         format.js
       else
         format.html { render action: 'new' }
@@ -70,5 +74,36 @@ class TransactionsController < ApplicationController
     def transaction_params
       params.require(:transaction).permit!
     end
+
+    # Returns the full title on a per-page basis.
+  def get_buyback_cost(transaction)
+    @inspection = transaction.inspection
+    inspection_value = calculate_inspection_value(@inspection)
+    buyback_cost = 0
+    if inspection_value > 1.5
+      puts transaction.quote.bike.good_value
+      buyback_cost = transaction.quote.bike.good_value
+    else
+      buyback_cost = transaction.quote.bike.fair_value
+      puts transaction.quote.bike.fair_value
+    end
+    puts buyback_cost
+    buyback_cost*0.6
+  end
+
+  def calculate_inspection_value(inspection)
+    total_inspection_value = 0
+    count = 0
+    inspection.attributes.each_pair do |name, value|
+      if value.is_a? Integer
+        total_inspection_value = total_inspection_value + value
+        count = count + 1
+      end
+    end 
+    puts total_inspection_value
+    puts count
+    inspection_value = total_inspection_value/count
+    inspection_value
+  end
 end
 

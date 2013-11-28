@@ -1,0 +1,10 @@
+<p><%= @customer.first_name %>,</p>
+
+<p>Your bicycle has been inspected at <%= link_to "YOUR BIKE SHOP HERE", "http://helenscycles.com/" %>.</p>
+
+<p>ReRide will offer you <%= number_to_currency(@transaction.buyback_cost) %> for your bike.</p>
+
+<p>Sincerely,</p>
+<p>The ReRide Team</p>
+
+<p><%= link_to "Quote Info", customer_url(@customer) %></p>

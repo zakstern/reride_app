@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
 
 
   has_many :quotes, dependent: :destroy
+  has_many :transactions, dependent: :destroy
   accepts_nested_attributes_for :quotes
 	validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }

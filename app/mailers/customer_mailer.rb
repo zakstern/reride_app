@@ -5,5 +5,12 @@ class CustomerMailer < ActionMailer::Base
     @customer = customer
     mail to: customer.email, subject: "Quote Confirmation"
   end
+
+  def inspection_confirmation(transaction)
+    @customer = transaction.customer
+    @transaction = transaction
+    mail to: @customer.email, subject: "Inspection Confirmation"
+  end
+
 end
 
