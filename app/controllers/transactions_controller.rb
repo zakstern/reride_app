@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :decline_offer]
 
   # GET /transactions
   # GET /transactions.json
@@ -10,9 +10,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    if @transaction.status != "Inspected"
-      redirect_to root_path #redirect to home page if transaction is not in the right status
-    end
+    
   end
 
   # GET /transactions/new
@@ -69,6 +67,14 @@ class TransactionsController < ApplicationController
 
   def confirm
     
+  end
+
+  def decline_offer
+    @transaction.status = "Declined"
+    @transaction.save
+    respond_to do |format|
+      format.html { redirect_to @transaction, notice: 'Offer was successfully declined.' }
+    end
   end
 
   private

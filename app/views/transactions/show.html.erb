@@ -3,24 +3,15 @@
 	<h1>Hi <%= @transaction.customer.first_name %>!</h1>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-      <% for quote in @transaction.customer.quotes %>
+<% if @transaction.status == "Inspected" %>
 
-        <div class="well well-lg">
-          <div class="center">
-            
-              Your transaction ID is: <strong>#<%= @transaction.quote.id %></strong>. ReRide will give you: <strong><%= number_to_currency(@transaction.buyback_cost) %></strong> for the bike listed below. 
+  <%= render 'inspected_transaction_info' %>
 
-              Please select an option:<br><br>
-            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#acceptModal">Sell bike to ReRide for <%= number_to_currency(@transaction.buyback_cost) %></button>
-            <button type="button" class="btn btn-danger btn-lg">Decline</button>
-          </div>
-        </div>
-      <% end %>
-  </div>
-</div>
+<% elsif @transaction.status == "Declined" %>
 
+  <%= render 'declined_transaction_proof' %>
+
+<% end %>
 
 <div class="row">
   <div class="col-md-4">
@@ -45,21 +36,4 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Confirm</h4>
-      </div>
-      <div class="modal-body">
-        <p>Please confirm or cancel your agreement to sell your bicycle to ReRide for <%= number_to_currency(@transaction.buyback_cost) %>.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Confirm</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<%= render 'confirm_modal' %>

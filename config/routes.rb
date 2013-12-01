@@ -11,7 +11,7 @@ RerideApp::Application.routes.draw do
   resources :customers
 
   resources :transactions do
-    get 'confirm', on: :member
+    get 'decline_offer', on: :member
   end
 
   resources :inspections
