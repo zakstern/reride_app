@@ -10,6 +10,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+    if @transaction.status != "Inspected"
+      redirect_to root_path #redirect to home page if transaction is not in the right status
+    end
   end
 
   # GET /transactions/new
@@ -62,6 +65,10 @@ class TransactionsController < ApplicationController
       format.html { redirect_to transactions_url }
       format.json { head :no_content }
     end
+  end
+
+  def confirm
+    
   end
 
   private

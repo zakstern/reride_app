@@ -1,6 +1,65 @@
-<p>Your inspection was successfully submitted.  An email has been sent to the customer with the results of the inspection and the final buyback quote.
-<br>  
-<br>
-You should remain in posession of the bike until the customer shows proof of rejecting the quote.</p>
+<% provide(:title, @transaction.customer.first_name) %>
+<div class ="center">
+	<h1>Hi <%= @transaction.customer.first_name %>!</h1>
+</div>
 
-<%= link_to "Submit Another Inspection", 'new' %><br>
+<div class="row">
+  <div class="col-md-12">
+      <% for quote in @transaction.customer.quotes %>
+
+        <div class="well well-lg">
+          <div class="center">
+            
+              Your transaction ID is: <strong>#<%= @transaction.quote.id %></strong>. ReRide will give you: <strong><%= number_to_currency(@transaction.buyback_cost) %></strong> for the bike listed below. 
+
+              Please select an option:<br><br>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#acceptModal">Sell bike to ReRide for <%= number_to_currency(@transaction.buyback_cost) %></button>
+            <button type="button" class="btn btn-danger btn-lg">Decline</button>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'shared/customer_info', customer: @transaction.customer %>
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+ <div class="row">
+  <div class="col-md-6">
+    <% for quote in @transaction.customer.quotes %>
+      <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Bike Info</div>
+          <%= render :partial => 'shared/quote_info', :locals => {:quote => @transaction.quote} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please confirm or cancel your agreement to sell your bicycle to ReRide for <%= number_to_currency(@transaction.buyback_cost) %>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

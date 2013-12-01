@@ -9,7 +9,11 @@ RerideApp::Application.routes.draw do
   resources :quotes
     match 'quotes/search/', :controller=> 'quotes', :action => 'search', via: 'post'
   resources :customers
-  resources :transactions
+
+  resources :transactions do
+    get 'confirm', on: :member
+  end
+
   resources :inspections
     
   resources :resellers do
@@ -26,6 +30,7 @@ RerideApp::Application.routes.draw do
   match '/signup',  to: 'customers#new',        via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/inspectioncomplete',   to: 'static_pages#inspectioncomplete',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
 

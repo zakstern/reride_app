@@ -3,6 +3,7 @@
 <p>Your bicycle has been inspected at <%= link_to "YOUR BIKE SHOP HERE", "http://helenscycles.com/" %>.</p>
 
 <p>ReRide will offer you <%= number_to_currency(@transaction.buyback_cost) %> for your bike.</p>
+<p>Please <%= link_to "accept or decline", transaction_url(@transaction) %> to accept or decline this offer.</p>
 
 <p>Sincerely,</p>
 <p>The ReRide Team</p>

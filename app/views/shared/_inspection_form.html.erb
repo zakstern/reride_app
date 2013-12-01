@@ -15,6 +15,7 @@
 
   <%= f.hidden_field :quote_id, :value => quote.id %>
   <%= f.hidden_field :customer_id, :value => quote.customer_id %>
+  <%= f.hidden_field :status, :value => "Inspected" %>
 
 
   <%= f.fields_for :inspection do |g| %>
