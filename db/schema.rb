@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120053944) do
+ActiveRecord::Schema.define(version: 20131204230532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131120053944) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "phone_number"
+    t.string   "paypal_email"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree

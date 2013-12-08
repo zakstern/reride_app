@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :decline_offer]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :decline_offer, :accept_offer]
 
   # GET /transactions
   # GET /transactions.json
@@ -27,9 +27,7 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-    puts @transaction.buyback_cost
     @transaction.buyback_cost = get_buyback_cost(@transaction)
-    puts @transaction.buyback_cost
     respond_to do |format|
       if @transaction.save
         CustomerMailer.inspection_confirmation(@transaction).deliver
@@ -74,6 +72,15 @@ class TransactionsController < ApplicationController
     @transaction.save
     respond_to do |format|
       format.html { redirect_to @transaction, notice: 'Offer was successfully declined.' }
+    end
+  end
+
+  def accept_offer
+    @transaction.status = "Accepted"
+    @transaction.customer.paypal_email = @transaction.customer.email
+    @transaction.save
+    respond_to do |format|
+      format.html { redirect_to @transaction, notice: 'Offer was successfully accepted.' }
     end
   end
 

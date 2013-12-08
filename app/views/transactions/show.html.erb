@@ -11,28 +11,23 @@
 
   <%= render 'declined_transaction_proof' %>
 
+<% elsif @transaction.status == "Accepted" %>
+
+  <%= render 'accepted_transaction_info' %>
+
 <% end %>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="panel-group" id="accordion">
+    
     <%= render 'shared/customer_info', customer: @transaction.customer %>
-  </div>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-  </div>
-</div>
-
- <div class="row">
-  <div class="col-md-6">
+    
     <% for quote in @transaction.customer.quotes %>
-      <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Bike Info</div>
-          <%= render :partial => 'shared/quote_info', :locals => {:quote => @transaction.quote} %>
-        </div>
-      </div>
+
+      <%= render :partial => 'shared/quote_info', :locals => {:quote => @transaction.quote} %>
+
     <% end %>
+  
   </div>
 </div>
 

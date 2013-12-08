@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-12">
+      <% for quote in @transaction.customer.quotes %>
+
+        <div class="well well-lg">
+          <div class="center">
+
+              You have accepted ReRide's offer.  Please <%= link_to "request a payment", "https://www.paypal.com/us/cgi-bin/webscr?cmd=_request-money" %> from info@reridebikes.com for <%= number_to_currency(@transaction.buyback_cost) %>.  Please include your transaction number (#<%= quote.id %>).  ReRide will respond to your request and transfer the funds via paypal in 5-7 days. <br>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

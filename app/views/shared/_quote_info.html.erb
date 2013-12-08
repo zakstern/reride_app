@@ -1,23 +1,37 @@
-<ul class="list-group">
-  <li class="list-group-item">
-    <strong>Make: </strong><%= quote.bike.make.name %>
-  </li>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-target="#collapseTwo">
+          Bike Info
+      </a>
+    </h4>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Make: </strong><%= quote.bike.make.name %>
+        </li>
 
-  <li class="list-group-item">
-    <strong>Model: </strong><%= quote.bike.model.name %>
-  </li>
+        <li class="list-group-item">
+          <strong>Model: </strong><%= quote.bike.model.name %>
+        </li>
 
-  <% year = Year.find_by(:year_value => quote.bike.year_id) %>
+        <% year = Year.find_by(:year_value => quote.bike.year_id) %>
 
-  <li class="list-group-item">
-    <strong>Year: </strong><%= year.year_value %>
-  </li>
+        <li class="list-group-item">
+          <strong>Year: </strong><%= year.year_value %>
+        </li>
 
-  <li class="list-group-item">
-    <strong>Side Picture </strong><br><%= image_tag quote.side_picture.url(:medium), :class =>"img-rounded" %>
-  </li>
+        <li class="list-group-item">
+          <strong>Side Picture </strong><br><%= image_tag quote.side_picture.url(:medium), :class =>"img-rounded" %>
+        </li>
 
-  <li class="list-group-item">
-    <strong>Front Picture </strong><br><%= image_tag quote.front_picture.url(:medium), :class =>"img-rounded" %>
-  </li>
-</ul>
+        <li class="list-group-item">
+          <strong>Front Picture </strong><br><%= image_tag quote.front_picture.url(:medium), :class =>"img-rounded" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
