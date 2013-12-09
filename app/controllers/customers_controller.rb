@@ -12,6 +12,8 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    @quote = @customer.quotes.build
+    @bike = Bike.find(params[:bike_id])
   end
 
   def create
@@ -21,7 +23,12 @@ class CustomersController < ApplicationController
       flash[:success] = "Information Saved!"
       redirect_to @customer
     else
-      render 'new'
+      if @customer.errors.any? 
+        @customer.errors.full_messages.each do |msg|
+          flash[:error] = msg
+        end 
+      end
+      #render 'new', :bike => Bike.find(33003)
     end
   end
 

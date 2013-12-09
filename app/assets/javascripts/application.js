@@ -18,5 +18,6 @@
 //= require bootstrap/collapse.js
 //= require bootstrap/tooltip.js
 //= require bootstrap/popover.js
+//= require bootstrap/alert.js
 //= require turbolinks
 //= require_tree .

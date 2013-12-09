@@ -15,6 +15,8 @@ RerideApp::Application.routes.draw do
     get 'accept_offer', on: :member
   end
 
+  match '/lookup', to: 'transactions#new', via: 'get'
+
   resources :inspections
     
   resources :resellers do

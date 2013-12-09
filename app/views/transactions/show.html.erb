@@ -18,16 +18,18 @@
 <% end %>
 
 <div class="row">
-  <div class="panel-group" id="accordion">
-    
-    <%= render 'shared/customer_info', customer: @transaction.customer %>
-    
-    <% for quote in @transaction.customer.quotes %>
+  <div class="col-md-12">
+    <div class="panel-group" id="accordion">
+      
+      <%= render 'shared/customer_info', customer: @transaction.customer %>
+      
+      <% for quote in @transaction.customer.quotes %>
 
-      <%= render :partial => 'shared/quote_info', :locals => {:quote => @transaction.quote} %>
+        <%= render :partial => 'shared/quote_info', :locals => {:quote => @transaction.quote} %>
 
-    <% end %>
-  
+      <% end %>
+    
+    </div>
   </div>
 </div>
 

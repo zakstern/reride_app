@@ -12,5 +12,9 @@ class Customer < ActiveRecord::Base
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 50 }, 
   		format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :type, length: { maximum: 50 }
+  validates :street_address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip_code, presence: true
+  validates :phone_number, presence: true
 end

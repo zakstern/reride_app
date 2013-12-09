@@ -3,8 +3,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
+  <div class="col-md-12">
+    <div class="panel-group" id="accordion">
+      <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
+    </div>
   </div>
 </div>
 

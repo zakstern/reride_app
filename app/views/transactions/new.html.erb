@@ -1,15 +1,14 @@
 <div class="row">
     <%= form_for(:quote, :url => {:controller => 'quotes', :action => 'search'}, remote: true, :html => {:role => "form", :id => "quote_lookup", :class => "form-inline"}) do |f| %>
-      <div class="form-group">
-          <%= f.label :quote_id, 'Transaction Number:' %>
-          <%= f.text_field :quote_id, class: 'form-control' %>
-      </div>
-        <%= f.submit "Find", class: "btn btn-primary btn-sm" %>
+      	<div class="form-group">
+        	<%= f.label :quote_id, 'Transaction Number:' %>
+        	<%= f.text_field :quote_id, class: 'form-control' %>
+			<%= f.submit "Find", class: "btn btn-primary" %>
+		</div>
     <% end %>
 </div>
 
-<div class="row">
-  <div id="inspection_form">
-  </div>
+<div id="inspection_form">
 </div>
+
 

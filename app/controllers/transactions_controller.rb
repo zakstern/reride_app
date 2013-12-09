@@ -71,7 +71,8 @@ class TransactionsController < ApplicationController
     @transaction.status = "Declined"
     @transaction.save
     respond_to do |format|
-      format.html { redirect_to @transaction, notice: 'Offer was successfully declined.' }
+      flash[:success] = "Offer was successfully declined."
+      format.html { redirect_to @transaction }
     end
   end
 
@@ -80,7 +81,8 @@ class TransactionsController < ApplicationController
     @transaction.customer.paypal_email = @transaction.customer.email
     @transaction.save
     respond_to do |format|
-      format.html { redirect_to @transaction, notice: 'Offer was successfully accepted.' }
+      flash[:success] = "Offer was successfully accepted."
+      format.html { redirect_to @transaction }
     end
   end
 

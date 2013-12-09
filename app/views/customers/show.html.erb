@@ -21,21 +21,15 @@
 
 
 <div class="row">
-  <div class="col-md-4">
-    <%= render 'shared/customer_info', customer: @customer %>
+  <div class="col-md-12">
+    <div class="panel-group" id="accordion">
+      <%= render 'shared/customer_info', customer: @customer %>
+
+      <% for quote in @customer.quotes %>
+        <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
+      <% end %>
+    </div>
   </div>
- 
 </div>
 
- <div class="row">
-  <div class="col-md-6">
-    <% for quote in @customer.quotes %>
-      <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Bike Info</div>
-          <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+

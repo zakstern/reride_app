@@ -11,6 +11,7 @@ class BikesController < ApplicationController
   # GET /bikes/1
   # GET /bikes/1.json
   def show
+    puts @bike.id.to_s
     @customer = Customer.new
     @quote = @customer.quotes.build
   end
@@ -65,7 +66,7 @@ class BikesController < ApplicationController
 
   def search
     bike = Bike.find_by(:make_id => params[:bike][:make_id], :model_id => params[:bike][:model_id], :year_id => params[:bike][:year_value])
-    redirect_to :action => "show", :id => bike.id
+    redirect_to :controller => "customers", :action => "new", :bike_id => bike.id
   end
 
   def update_model_select
@@ -94,8 +95,6 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:year_id, :make, :make_id, :model, :model_id, :kind, 
-        :msrp, :current_price, :customer_id, :side_picture, :like_new_value, :excellent_value, :good_value,
-        :fair_value)
+      params.require(:bike).permit!
     end
 end
