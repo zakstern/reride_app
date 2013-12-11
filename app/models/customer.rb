@@ -1,4 +1,5 @@
 class Customer < ActiveRecord::Base
+  has_secure_password
 	# disable STI
   self.inheritance_column = :_type_disabled
   before_save { self.email = email.downcase }
@@ -17,4 +18,5 @@ class Customer < ActiveRecord::Base
   validates :state, presence: true
   validates :zip_code, presence: true
   validates :phone_number, presence: true
+  validates :password, length: { minimum: 6 }
 end

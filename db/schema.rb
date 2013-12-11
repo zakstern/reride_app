@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131204230532) do
     t.string   "zip_code"
     t.string   "phone_number"
     t.string   "paypal_email"
+    t.string   "password_digest"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
