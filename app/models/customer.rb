@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
 	# disable STI
   self.inheritance_column = :_type_disabled
   before_save { self.email = email.downcase }
+  before_create :create_remember_token
 
 
   has_many :quotes, dependent: :destroy
@@ -19,4 +20,18 @@ class Customer < ActiveRecord::Base
   validates :zip_code, presence: true
   validates :phone_number, presence: true
   validates :password, length: { minimum: 6 }
+
+  def Customer.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def Customer.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+
+    def create_remember_token
+      self.remember_token = Customer.encrypt(Customer.new_remember_token)
+    end
 end

@@ -1,4 +1,5 @@
 RerideApp::Application.routes.draw do
+  resources :sessions, only: [:new, :create, :destroy]
   resources :quotes
   resources :contacts
   resources :bikes
@@ -35,6 +36,8 @@ RerideApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/inspectioncomplete',   to: 'static_pages#inspectioncomplete',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
 
 

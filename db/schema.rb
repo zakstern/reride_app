@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204230532) do
+ActiveRecord::Schema.define(version: 20131212014521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,9 +69,11 @@ ActiveRecord::Schema.define(version: 20131204230532) do
     t.string   "phone_number"
     t.string   "paypal_email"
     t.string   "password_digest"
+    t.string   "remember_token"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
+  add_index "customers", ["remember_token"], name: "index_customers_on_remember_token", using: :btree
 
   create_table "inspections", force: true do |t|
     t.integer  "transaction_id"
