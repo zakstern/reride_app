@@ -1,0 +1,90 @@
+<%= form_for(@quote, :html => { :role => "form", :class => "form-horizontal", :multipart => true}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :bike_id, :value => @bike.id %>
+
+  <div class="form-group">
+    <%= f.label :size, 'Frame Size (in cm)' %>
+    <%= f.text_field :size, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :serial_number, 'Serial Number' %>
+    <%= f.text_field :serial_number, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :side_picture, 'Picture of Bike (from the side)' %>
+    <div class="row">
+      <%= image_tag("example_bike_from_side.jpg", :alt => "Example") %>
+    </div>
+    <br>
+    <%= f.file_field :side_picture %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :front_picture, 'Picture of Bike (from the front)' %>
+    <%= f.file_field :front_picture %>
+  </div>
+
+  <%= f.fields_for @customer do |g| %>
+    <div class="row">
+      <h1>Customer Info:</h1>
+    </div>
+
+    <div class="form-group">
+      <%= g.label :first_name, 'First Name' %>
+      <%= g.text_field :first_name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= g.label :last_name, 'Last Name' %>
+      <%= g.text_field :last_name, :class => "form-control" %>
+    </div>
+
+    <% if !signed_in? %>
+      <div class="form-group">
+        <%= g.label :email, 'Email' %>
+        <%= g.email_field :email, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= g.label :password, 'Password' %>
+        <%= g.password_field :password, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= g.label :password_confirmation, 'Confirmation' %>
+        <%= g.password_field :password_confirmation, :class => "form-control" %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= g.label :street_address, 'Street Address' %>
+      <%= g.text_field :street_address, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= g.label :city, 'City' %>
+      <%= g.text_field :city, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= g.label :state, 'State' %>
+      <%= g.select :state, options_for_select(us_states), { :include_blank => true }, {:class => "form-control"} %>
+    </div>  
+
+    <div class="form-group">
+      <%= g.label :zip_code, 'Zip Code' %>
+      <%= g.text_field :zip_code, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= g.label :phone_number, 'Phone Number' %>
+      <%= g.telephone_field :phone_number, :class => "form-control" %>
+    </div>
+    
+  <% end %>
+
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
