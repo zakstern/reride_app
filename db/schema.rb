@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212014521) do
+ActiveRecord::Schema.define(version: 20131214064817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20131212014521) do
     t.string   "paypal_email"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
@@ -97,6 +98,13 @@ ActiveRecord::Schema.define(version: 20131212014521) do
     t.integer  "rear_tube_status"
     t.integer  "frame_status"
     t.text     "additional_info"
+    t.integer  "make_confirmation"
+    t.integer  "model_confirmation"
+    t.integer  "year_confirmation"
+    t.integer  "frame_size"
+    t.string   "serial_number"
+    t.integer  "front_picture_confirmation"
+    t.integer  "side_picture_confirmation"
   end
 
   create_table "makes", force: true do |t|
@@ -125,10 +133,13 @@ ActiveRecord::Schema.define(version: 20131212014521) do
     t.string   "front_picture_content_type"
     t.integer  "front_picture_file_size"
     t.datetime "front_picture_updated_at"
+    t.integer  "size"
+    t.string   "serial_number"
   end
 
   add_index "quotes", ["bike_id"], name: "index_quotes_on_bike_id", using: :btree
   add_index "quotes", ["customer_id"], name: "index_quotes_on_customer_id", using: :btree
+  add_index "quotes", ["serial_number"], name: "index_quotes_on_serial_number", using: :btree
 
   create_table "resellers", force: true do |t|
     t.string   "name"

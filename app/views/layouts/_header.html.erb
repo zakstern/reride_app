@@ -19,17 +19,11 @@
       <li><%= link_to "About",   "#" %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <form class="navbar-form" role="form">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default">Login</button>
-        </form>
-      </li>
+      <% if signed_in? %>
+        <%= render 'layouts/signed_in_header' %>
+      <% else %>
+        <%= render 'layouts/signed_out_header' %>
+      <% end %>
   </div><!-- /.navbar-collapse -->
 </nav>
 

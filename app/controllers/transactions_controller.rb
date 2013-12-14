@@ -10,7 +10,11 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    
+    if current_customer?(@transaction.customer)
+      render
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /transactions/new
@@ -30,7 +34,7 @@ class TransactionsController < ApplicationController
     @transaction.buyback_cost = get_buyback_cost(@transaction)
     respond_to do |format|
       if @transaction.save
-        CustomerMailer.inspection_confirmation(@transaction).deliver
+        #CustomerMailer.inspection_confirmation(@transaction).deliver
         format.js
       else
         format.html { render action: 'new' }
@@ -88,6 +92,7 @@ class TransactionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
@@ -97,35 +102,34 @@ class TransactionsController < ApplicationController
       params.require(:transaction).permit!
     end
 
-    # Returns the full title on a per-page basis.
-  def get_buyback_cost(transaction)
-    @inspection = transaction.inspection
-    inspection_value = calculate_inspection_value(@inspection)
-    buyback_cost = 0
-    if inspection_value > 1.5
-      puts transaction.quote.bike.good_value
-      buyback_cost = transaction.quote.bike.good_value
-    else
-      buyback_cost = transaction.quote.bike.fair_value
-      puts transaction.quote.bike.fair_value
-    end
-    puts buyback_cost
-    buyback_cost*0.6
-  end
-
-  def calculate_inspection_value(inspection)
-    total_inspection_value = 0
-    count = 0
-    inspection.attributes.each_pair do |name, value|
-      if value.is_a? Integer
-        total_inspection_value = total_inspection_value + value
-        count = count + 1
+    def get_buyback_cost(transaction)
+      @inspection = transaction.inspection
+      inspection_value = calculate_inspection_value(@inspection)
+      buyback_cost = 0
+      if inspection_value > 1.5
+        puts transaction.quote.bike.good_value
+        buyback_cost = transaction.quote.bike.good_value
+      else
+        buyback_cost = transaction.quote.bike.fair_value
+        puts transaction.quote.bike.fair_value
       end
-    end 
-    puts total_inspection_value
-    puts count
-    inspection_value = total_inspection_value/count
-    inspection_value
-  end
+      puts buyback_cost
+      buyback_cost*0.6
+    end
+
+    def calculate_inspection_value(inspection)
+      total_inspection_value = 0
+      count = 0
+      inspection.attributes.each_pair do |name, value|
+        if value.is_a? Integer
+          total_inspection_value = total_inspection_value + value
+          count = count + 1
+        end
+      end 
+      puts total_inspection_value
+      puts count
+      inspection_value = total_inspection_value/count
+      inspection_value
+    end
 end
 

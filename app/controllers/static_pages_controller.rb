@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-  	@contact = Contact.new
+  	if signed_in?
+
+  	end
   end
 
   def help

@@ -3,13 +3,15 @@
   <div class="panel-heading">
     <h4 class="panel-title">
       <a data-toggle="collapse" data-target="#collapseTwo">
-          Bike Info
+          Bikes
       </a>
     </h4>
   </div>
   <div id="collapseTwo" class="panel-collapse collapse in">
     <div class="panel-body">
+      <%= render :partial => 'shared/quote_status', :locals => {:quote => quote} %>
       <ul class="list-group">
+
         <li class="list-group-item">
           <strong>Make: </strong><%= quote.bike.make.name %>
         </li>
@@ -22,6 +24,14 @@
 
         <li class="list-group-item">
           <strong>Year: </strong><%= year.year_value %>
+        </li>
+
+        <li class="list-group-item">
+          <strong>Frame Size: </strong><%= quote.size %>
+        </li>
+
+        <li class="list-group-item">
+          <strong>Serial Number: </strong><%= quote.serial_number %>
         </li>
 
         <li class="list-group-item">

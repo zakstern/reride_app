@@ -9,7 +9,7 @@ $('.link').tooltip({placement: "bottom", })
   </div>
 </div>
 
-<div class="row">
+
   <h1>Bike Info: </h1>
   <ul class="list-group">
     <li class="list-group-item">
@@ -18,6 +18,6 @@ $('.link').tooltip({placement: "bottom", })
       <strong>Year: </strong><%= Year.find_by(:year_value => @bike.year_id).year_value %>
     </li>
   </ul>
-</div>
+
   
 <%= render 'shared/customer_form', :customer => @customer, :bike => @bike %>

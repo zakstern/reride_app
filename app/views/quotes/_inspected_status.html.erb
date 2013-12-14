@@ -1,0 +1,9 @@
+<div class="well well-lg">
+  <div class="center">
+      Your transaction ID is: <strong>#<%=transaction.quote.id.to_s %></strong>. ReRide will give you: <strong><%= number_to_currency(transaction.buyback_cost) %></strong> for the bike listed below. 
+
+      Please select an option:<br><br>
+      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#acceptModal">Sell bike to ReRide for <%= number_to_currency(transaction.buyback_cost) %></button>
+      <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#declineModal">Decline</button>
+  </div>
+</div>

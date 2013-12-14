@@ -5,29 +5,11 @@
 
 <div class="row">
   <div class="col-md-12">
-      <% for quote in @customer.quotes %>
-
-        <div class="well well-lg">
-          <div class="center">
-            
-              ReRide will give you up to <strong><%= number_to_currency((quote.bike.like_new_value)*0.6) %></strong> for the bike listed below. Please take your bike to <%= link_to "YOUR BIKE SHOP HERE", "http://helenscycles.com/" %> for inspection.  <br>
-              Your transaction ID is: <strong>#<%= quote.id %></strong>.  An email with this information has been sent to your email below.
-            
-          </div>
-        </div>
-      <% end %>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-md-12">
     <div class="panel-group" id="accordion">
-      <%= render 'shared/customer_info', customer: @customer %>
-
       <% for quote in @customer.quotes %>
         <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
       <% end %>
+      <%= render 'shared/customer_info', customer: @customer %>
     </div>
   </div>
 </div>

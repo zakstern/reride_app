@@ -8,6 +8,11 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    if current_customer?(@customer)
+      render
+    else
+      redirect_to root_url
+    end
   end
 
   def new
@@ -20,7 +25,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params) 
     if @customer.save
       sign_in @customer
-      CustomerMailer.quote_confirmation(@customer).deliver
+      #CustomerMailer.quote_confirmation(@customer).deliver
       flash[:success] = "Information Saved!"
       redirect_to @customer
     else
@@ -30,6 +35,16 @@ class CustomersController < ApplicationController
         end 
       end
       #render 'new', :bike => Bike.find(33003)
+    end
+  end
+
+  def update
+    if @customeer.update_attributes(customer_params)
+      flash[:success] = "Profile updated"
+      sign_in @customer
+      redirect_to @customer
+    else
+      render 'edit'
     end
   end
 

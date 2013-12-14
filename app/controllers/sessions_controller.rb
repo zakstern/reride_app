@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
       		redirect_to customer
   		else
     	# Create an error message and re-render the signin form.
-	    	flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-	      	render 'new'
+	    	flash[:danger] = 'Invalid email/password combination' # Not quite right!
+	    	redirect_to root_url
   		end
 	end
 
