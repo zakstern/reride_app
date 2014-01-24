@@ -34,7 +34,7 @@ class TransactionsController < ApplicationController
     @transaction.buyback_cost = get_buyback_cost(@transaction)
     respond_to do |format|
       if @transaction.save
-        #CustomerMailer.inspection_confirmation(@transaction).deliver
+        CustomerMailer.inspection_confirmation(@transaction).deliver
         format.js
       else
         format.html { render action: 'new' }
@@ -76,7 +76,7 @@ class TransactionsController < ApplicationController
     @transaction.save
     respond_to do |format|
       flash[:success] = "Offer was successfully declined."
-      format.html { redirect_to @transaction }
+      format.html { redirect_to @transaction.customer }
     end
   end
 
@@ -86,7 +86,7 @@ class TransactionsController < ApplicationController
     @transaction.save
     respond_to do |format|
       flash[:success] = "Offer was successfully accepted."
-      format.html { redirect_to @transaction }
+      format.html { redirect_to @transaction.customer }
     end
   end
 
