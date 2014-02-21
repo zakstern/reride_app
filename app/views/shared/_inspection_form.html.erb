@@ -5,42 +5,64 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel-group" id="accordion">
-      <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
-    </div>
+      <%= render :partial => 'shared/quote_info', :locals => {:quote => quote, :show_quote_status => false} %>
+
+      <div class="panel panel-primary">
+  <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-target="#collapseThree">
+                Inspection Form
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ul class="list-group">
+            <%= form_for transaction, :remote => true, :html => { :id => "finish_inspection", :role => "form", :class => "form-horizontal"} do |f| %>
+
+              <%#= render 'shared/error_messages', object: f.object %>
+
+              <%= f.hidden_field :quote_id, :value => quote.id %>
+              <%= f.hidden_field :customer_id, :value => quote.customer_id %>
+              <%= f.hidden_field :status, :value => "Inspected" %>
+
+
+              <%= f.fields_for :inspection do |g| %>
+              
+                <% Inspection::INSPECTION_HASH.each do |key, value| %>
+                  <h3> <%=key.titleize %> </h3>
+                  
+                    <li class="list-group-item">
+                    <% value.each do |k, v| %>
+                    
+                      <div class="form-group">
+                      <%= g.radio_button key, v %>
+                      <%= g.label key, k %>
+                      </div>
+                    
+                    <% end %>
+                  </li>
+                <% end %> 
+                <li class="list-group-item">
+                <div class="form-group">
+                  <%= g.label :additional_info, "Any Additional Info:" %>
+                  <%= g.text_area :additional_info %>
+                </div>
+              </li>
+              <% end %>
+
+              <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 
 
-<%= form_for transaction, :remote => true, :html => { :id => "finish_inspection", :role => "form", :class => "form-horizontal"} do |f| %>
 
-  <%#= render 'shared/error_messages', object: f.object %>
-
-  <%= f.hidden_field :quote_id, :value => quote.id %>
-  <%= f.hidden_field :customer_id, :value => quote.customer_id %>
-  <%= f.hidden_field :status, :value => "Inspected" %>
-
-
-  <%= f.fields_for :inspection do |g| %>
-  
-    <% Inspection::INSPECTION_HASH.each do |key, value| %>
-      <h1> <%=key.titleize %> </h1>
-      <div class="form-group">
-        <% value.each do |k, v| %>
-          <%= g.radio_button key, v %>
-          <%= g.label key, k %>
-        <% end %>
-      </div>
-    <% end %> 
-
-    <div class="form-group">
-      <%= g.label :additional_info, "Any Additional Info:" %>
-      <%= g.text_area :additional_info %>
-    </div>
-  <% end %>
-
-
-  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-<% end %>
 
 
 

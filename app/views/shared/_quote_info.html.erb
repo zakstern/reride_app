@@ -9,7 +9,10 @@
   </div>
   <div id="collapseTwo" class="panel-collapse collapse in">
     <div class="panel-body">
-      <%= render :partial => 'shared/quote_status', :locals => {:quote => quote} %>
+
+      <% if show_quote_status %> 
+        <%= render :partial => 'shared/quote_status', :locals => {:quote => quote} %>
+      <% end %>
       <ul class="list-group">
 
         <li class="list-group-item">

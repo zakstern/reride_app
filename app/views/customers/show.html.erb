@@ -7,7 +7,7 @@
   <div class="col-md-12">
     <div class="panel-group" id="accordion">
       <% for quote in @customer.quotes %>
-        <%= render :partial => 'shared/quote_info', :locals => {:quote => quote} %>
+        <%= render :partial => 'shared/quote_info', :locals => {:quote => quote, :show_quote_status => true } %>
       <% end %>
       <%= render 'shared/customer_info', customer: @customer %>
     </div>
