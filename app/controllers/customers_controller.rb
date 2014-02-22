@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params) 
     if @customer.save
       sign_in @customer
-      CustomerMailer.quote_confirmation(@customer).deliver
+      #CustomerMailer.quote_confirmation(@customer).deliver
       flash[:success] = "Information Saved!"
       redirect_to @customer
     else

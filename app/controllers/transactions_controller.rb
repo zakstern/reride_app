@@ -34,7 +34,7 @@ class TransactionsController < ApplicationController
     @transaction.buyback_cost = get_buyback_cost(@transaction)
     respond_to do |format|
       if @transaction.save
-        CustomerMailer.inspection_confirmation(@transaction).deliver
+        #CustomerMailer.inspection_confirmation(@transaction).deliver
         format.js
       else
         format.html { render action: 'new' }

@@ -5,7 +5,7 @@ $('.link').tooltip({placement: "bottom", })
 <div class="well well-lg">
   <div class="center">
     Depending on its <a href="#" class="link" data-original-title="Condition will be determined by one of our retail partners during inspection.">condition</a>, ReRide will purchase your bike for a price up to 
-          <strong> <%= number_to_currency((@bike.like_new_value)*0.6) %></strong>. If you would like to move forward with the quote, please fill out the form below.
+          <strong> <%= number_to_currency((@bike.like_new_value)*0.7,:precision => 0) %></strong>. If you would like to move forward with the quote, please fill out the form below.
   </div>
 </div>
 
