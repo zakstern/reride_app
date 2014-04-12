@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Confirm</h4>
       </div>
       <div class="modal-body">
-        <p>Please confirm your agreement to sell your bicycle to ReRide for <%= number_to_currency(@transaction.buyback_cost) %>.</p>
+        <p>Please confirm your agreement to sell your bicycle to ReRide for <%= number_to_currency((transaction.quote.bike.like_new_value)*0.7,:precision => 0) %>.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

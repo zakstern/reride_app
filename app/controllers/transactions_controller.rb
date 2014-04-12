@@ -84,6 +84,7 @@ class TransactionsController < ApplicationController
     @transaction.status = "Accepted"
     @transaction.customer.paypal_email = @transaction.customer.email
     @transaction.save
+    puts @transaction.status
     respond_to do |format|
       flash[:success] = "Offer was successfully accepted."
       format.html { redirect_to @transaction.customer }

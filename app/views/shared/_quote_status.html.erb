@@ -4,7 +4,7 @@
 	<% if quote.transaction.status == "Inspected" %>
 		<%= render 'quotes/inspected_status', transaction: quote.transaction %>
 	<% elsif quote.transaction.status == "Accepted" %>
-		<%= render 'quotes/accepted_status', transaction: quote.transaction %>
+		<%= render 'customers/accepted_status', transaction: quote.transaction %>
 	<% elsif quote.transaction.status == "Declined" %>
 		<%= render 'quotes/declined_status', transaction: quote.transaction %>
 	<% end %>

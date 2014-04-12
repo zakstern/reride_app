@@ -39,7 +39,7 @@ class CustomersController < ApplicationController
   end
 
   def update
-    if @customeer.update_attributes(customer_params)
+    if @customer.update_attributes(customer_params)
       flash[:success] = "Profile updated"
       sign_in @customer
       redirect_to @customer
